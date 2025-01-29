@@ -1,0 +1,375 @@
+@import '../../../palette.scss';
+
+.thumbnail-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+
+    @media (min-width: 768px) { 
+      height: 100px; width: 100px;
+    }
+
+    &:hover,
+    &.active {
+      border-color: #e67e22;
+    }
+  }
+}
+
+  
+  .see-more {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .product {
+
+    &__display {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 960px) { 
+        flex-direction: row;
+      }
+
+      .left__container {
+        display: flex;
+        margin-bottom: 70px;
+
+        @media (min-width: 960px) { 
+          margin-bottom: 0;
+        }
+      }
+
+      .right__container {
+        @media (min-width: 960px) { 
+          width: 70%;
+        }
+      }
+    }
+
+    &__img {
+      position: relative;
+      margin-left: 20px;
+
+      &__main {
+        max-width: 500px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    &__info {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 10px solid $reseda-green;
+      padding-left: 25px;
+      
+
+      @media (min-width: 960px) { 
+        margin-left: 35px;
+        height: 100%;
+        padding-left: 45px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          font-size: 18px;
+          color: #555;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          i {
+            color: $fern-green;
+            // color: #4caf50;
+          }
+        }
+      }
+      
+
+    }
+
+  }
+
+  h1 {
+    position: relative;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: -10px; left: 0;
+        display: block;
+        width: 60px; height: 3px;
+        background-color: $pakistan-green;
+    }
+  }
+
+
+ ::ng-deep {
+
+   .btn {
+     &__dowload {
+       display: block;
+       margin-top: 55px;
+     }.bg-primary {
+      background: $fern-green !important;
+  }
+  
+  .text-primary {
+      color: $reseda-green !important;
+  }
+  
+  .btn-outline-primary {
+      color: $fern-green;
+      border-color: $reseda-green;
+  }
+  
+  .btn-outline-primary:hover {
+      border-color: $reseda-green;
+  }
+ 
+     &__share {
+       position: absolute;
+       top:15px; right:15px;
+ 
+       .p-button{
+         background: #fff !important;
+         color: $fern-green !important;
+         border-radius: 50% !important;
+         height: 40px !important; width: 40px !important;
+
+       }
+     }
+   }
+ } 
+
+
+ .included {
+  font-weight: bold;
+  color: #4caf50 !important;
+ }
+
+ .horizontal__separator {
+  display: block;
+  width: 100%; height: 3px;
+  background-color: $pakistan-green;
+  margin: 15px 0;
+ }
+
+ .included__label {
+  display: inline-block;
+  background-color: #4caf50;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px;
+ }
+
+ .headline {
+  color: $fern-green;
+  text-decoration: underline;
+  font-weight: bold;
+
+  &.ml {
+    display: inline-block;
+    margin-left: 10px;
+  }
+ }
+
+ .tux {
+  height: 30px; width: 30px;
+ }
+
+
+
+
+
+ .left__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.thumbnail-carousel.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.carousel-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.carousel-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  height: 340px; /* Adjust as per your design */
+}
+
+.carousel-track img {
+  width: 60px;
+  height: 60px;
+  object-fit: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.carousel-track img.active {
+  border-color: #007bff;
+}
+
+.product__img {
+  text-align: center;
+  height: 400px;
+  width: 100%;
+
+  @media (min-width: 960px) { 
+    width: 400px;
+  }  
+
+  &__main {
+    max-width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+  }
+
+  video {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.video-thumbnail {
+  position: relative;
+}
+
+.thumbnail {
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.play-icon {
+  height: 30px;
+  width: 30px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.thumbnail-carousel {
+
+  .arrow {
+    color: $fern-green;
+    transition: all .5s ease-in-out;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 10px; 
+
+    &:hover {
+      color: #fff;
+      background-color: $fern-green;
+    }
+  }
+
+  .disabled .arrow {
+    color: grey;
+    cursor: auto;
+    opacity: .5;
+
+    &:hover {
+      background-color: transparent;
+      color: grey;
+    }
+  }
+}
+
+::ng-deep {
+  .btn__share {
+
+    .p-button {
+      transition: all .3s ease-in-out;
+    }
+
+    &:hover {
+
+      cursor: pointer;
+
+      & .p-button {
+        background-color: $fern-green !important;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+
+::ng-deep {
+  .share__menu {
+  
+    position: absolute;
+    top: 60px; right: 5px;
+    opacity: 0;
+    height: 0; width: 60px;
+    transition: all .3s ease-in-out;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: -1;
+    
+    &.open {
+      z-index: 1;
+      opacity: 1;
+      height: 200px;
+    }
+  
+    .sb-default.sb-group {
+      display: flex;
+      flex-direction: column !important;
+    }
+  
+  }
+}

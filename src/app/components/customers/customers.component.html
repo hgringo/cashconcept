@@ -1,0 +1,37 @@
+<section class="customers  py-5">
+        <div class="container-fluid">
+        <div class="container">
+
+            <h1 class="text-primary text-center mb-4">{{ 'customerOur'  | translate }} <span class="fw-light text-dark">{{ 'customerRef'  | translate }}</span></h1>
+
+            <p-carousel
+                [value]="customers" 
+                [numVisible]="5"
+                [numScroll]="1"
+                [showNavigators]="true"
+                [circular]="true"
+                [responsiveOptions]="responsiveOptions"
+                indicatorsContentClass="slider__indicators"
+            >
+                <ng-template #previousicon>
+                    <img class="arrow arrow__left" src="assets/arrow.svg" alt="arrow-left" />
+                </ng-template>
+
+                <ng-template #nexticon>
+                    <img class="arrow arrow__right" src="assets/arrow.svg" alt="arrow-right" />
+                </ng-template>
+
+                <ng-template let-customer #item>
+                    <div class="slider__container">
+                        <div class="wow fadeIn customer__container" data-wow-delay="0.1s">
+                            <div class="customer__item text-center border h-100 p-4">
+                                <img class="img-fluid mb-4 customer__image" [src]="customer.url" [alt]="customer.name" />
+                                <span class="h6">{{customer.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+</section>

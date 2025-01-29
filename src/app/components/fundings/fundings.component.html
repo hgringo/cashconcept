@@ -1,0 +1,33 @@
+<div class="funding__container">
+  <div class="container funding__content">
+    <h1 class="text-primary mb-4">{{ 'fundingTitle'  | translate }} <span class="fw-light text-light">{{ 'fundingTitle2'  | translate }}</span></h1>
+    <p class="fw-light text-light mb-2">
+      {{ 'fundingContent'  | translate }}
+    </p>
+    <p class="fw-light text-light mb-6">
+      {{ 'fundingContent2'  | translate }}
+    </p>
+
+    <p-carousel
+    [value]="leasingCompanies" 
+    [showNavigators]="false"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    indicatorsContentClass="slider__indicators"
+    >
+        <ng-template let-lease #item>
+          <div class="funding__img__wrapper">
+            <img class="funding__img" [src]="lease.src" [alt]="lease.name" />
+          </div>
+        </ng-template>
+    </p-carousel>
+
+    <div class="funding__imgs">
+      <div class="funding__img__wrapper" *ngFor="let lease of leasingCompanies">
+        <img class="funding__img" [src]="lease.src" [alt]="lease.name" />
+      </div>
+    </div>
+
+    <small class="fw-light text-light mt-4">{{ 'fundingSubContent'  | translate }}</small>
+  </div>
+</div>

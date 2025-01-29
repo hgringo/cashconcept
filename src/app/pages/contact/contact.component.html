@@ -1,0 +1,131 @@
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" className="contact"></app-subheader>
+
+<!-- Contact Info Start -->
+<div class="container-fluid content">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8 wow fadeIn" data-wow-delay="0.5s">
+                <img class="img-fluid animated" src="assets/contact.jpg" />
+            </div>
+            <div class="col-lg-4 wow fadeIn contact__container" data-wow-delay="0.3s">
+                <div class="contact__item">
+                    <p class="contact__name">Olivier</p>
+                    <a class="contact__phone" href="tel:{{environment.phoneNumberOlivier}}">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>{{ environment.phoneNumberOlivier }}</span>
+                    </a>
+                    <a class="contact__mail" href="mailto:{{environment.mailOlivier}}">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>{{ environment.mailOlivier }}</span>
+                    </a>
+                </div>
+
+                <div class="contact__item">
+                    <p class="contact__name">Pierre</p>
+                    <a class="contact__phone" href="tel:{{environment.phoneNumberPierre}}">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>{{ environment.phoneNumberPierre }}</span>
+                    </a>
+                    <a class="contact__mail" href="mailto:{{environment.mailPierre}}">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>{{ environment.mailPierre }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Info End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s">
+            <h1 class="text-primary mb-5 contact__title"><span class="fw-light text-dark">{{'contactTitle'| translate}}</span> {{'contactTitle2'| translate}}</h1></div>
+            <p class="mb-5 text-center contact__intro">{{'contactText'| translate}}</p>
+       
+            <div class="row g-5">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
+                
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+
+                    <div class="form__confirmation" *ngIf="isFormSended">
+                        <i class="pi pi-check-circle form__confirmation__icon"></i>
+                        <p class="form__confirmation__message">{{ 'sendedRequest' | translate }}</p>
+                    </div>
+
+                    <form [formGroup]="contactForm" *ngIf="!isFormSended">
+                        <div class="row g-3">
+                            <div class="contact__field" style="display: none;">
+                                <label for="contact__name">Name<span class="required">*</span></label>
+                                <input id="contact__name" autocomplete="off" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="firstName" class="form-control" id="name" placeholder="Name">
+                                    <label for="name">{{'contactFirstname'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="lastName" class="form-control" id="name" placeholder="Name">
+                                    <label for="name">{{'contactLastname'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+                                    <label for="email">{{'contactEmail'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="phoneNumber" class="form-control" id="name" placeholder="Name">
+                                    <label for="name">{{'contactPhoneNumber'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="society" class="form-control" id="name" placeholder="Name">
+                                    <label for="name">{{'contactSociety'| translate}}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="tva" class="form-control" id="name" placeholder="Name">
+                                    <label for="name">{{'contactTVA'| translate}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" formControlName="subject" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">{{'contactSubject'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea formControlName="message" class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                    <label for="message">{{'contactMessage'| translate}}<span class="required">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit" [disabled]="contactForm.invalid" (click)="onSubmit()" >Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
+                <iframe 
+                    class="w-100 h-100" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8348.873075181178!2d4.4365452807442605!3d50.452534503623184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c228c91d12d65b%3A0x34d922d933921a8d!2s4i%C3%A8me%20Rue%2033%2C%206040%20Charleroi!5e1!3m2!1sen!2sbe!4v1737677195012!5m2!1sen!2sbe" 
+                    style="min-height: 300px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+<app-footer></app-footer>

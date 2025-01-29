@@ -1,0 +1,78 @@
+<!-- Footer Start -->
+<div class="container-fluid bg-white footer">
+    <div class="container py-5">
+        <div class="row g-5 reverse">
+            <div class="col-md-6 col-lg-3 wow fadeIn info" data-wow-delay="0.1s"> 
+                <a [href]="['/']" class="d-inline-block mb-4 footer__logo__link">
+                    <img class="footer__logo" src="assets/logo.png" alt="CashConcept Logo" />
+                </a>
+                <a class="btn" href="tel:0032493994972">
+                    <i class="fa-solid fa-user me-3"></i>
+                    <span class="contact__name">Olivier :</span>
+                    <span class="contact__phone">+32 493 99 49 72</span>
+                </a>
+                <a class="btn" href="tel:0032472909531">
+                    <i class="fa-solid fa-user me-3"></i>
+                    <span class="contact__name">Pierre :</span>
+                    <span class="contact__phone">+32 472 90 95 31</span>
+                </a>
+                <a class="btn" href="mailto:info&#64;cashconcept.be"><i class="fa fa-envelope me-3"></i>info&#64;cashconcept.be</a>
+                <div class="footer__contact">
+                    <a class="btn btn-primary py-2 px-4 mt-4" [href]="['/contact']">
+                        {{ 'contactUs' | translate }}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeIn facebook" data-wow-delay="0.3s">
+                <app-facebook-feed></app-facebook-feed>
+            </div>
+            <div class="col-md-6 col-lg-2 wow fadeIn links" data-wow-delay="0.5s">
+                <h5 class="mb-5">
+                    {{'footerCoinTitle' | translate}} <br />
+                    {{'footerCoinTitle2' | translate}}
+                </h5>
+                <a *ngFor="let product of coinChangers" class="btn btn-link" [href]="['/product/' + product.id]">
+                    {{product.name}}
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn links" data-wow-delay="0.7s">
+                <h5 class="mb-5">
+                    {{'footerControlTitle' | translate}} <br />
+                    {{'footerControlTitle2' | translate}}
+                </h5>
+                
+                <a *ngFor="let product of controlTerminals" class="btn btn-link" [href]="['/product/' + product.id]">
+                    {{product.name}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container wow fadeIn" data-wow-delay="0.1s">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; {{currentYear}} - <a class="border-bottom link" [href]="['/']">CashConcept</a>, {{ 'allRightReserved' | translate }}.
+
+                    <div class="hidden">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a [href]="['/']">
+                            {{ 'menuHome' | translate }}
+                        </a>
+                        <a [href]="['/sitemap']">
+                            {{ 'menuSiteMap' | translate }}
+                        </a>
+                        <a [href]="['assets/CONDITIONS GENERALES_CashConcept.pdf']" target="_blank">
+                            {{ 'menuLegal' | translate }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->

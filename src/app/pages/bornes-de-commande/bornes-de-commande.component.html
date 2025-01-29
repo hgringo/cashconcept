@@ -1,0 +1,42 @@
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle"></app-subheader>
+
+<div class="container-fluid content">
+  <div class="container">
+      <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 800px;">
+          <h1 class="text-primary mb-4"><span class="fw-light text-dark">{{'controlPageTitle' | translate}}</span> {{'controlPageTitle2' | translate}}</h1>
+          <p class="mb-2">{{ 'pageControlDesc' | translate }}</p>
+          <p class="mb-5">{{ 'pageControlDesc2' | translate }}</p>
+      </div>
+      <div class="row g-3">
+          <div *ngFor="let product of products" class="col-md-6 col-lg-4 wow fadeIn product__container" data-wow-delay="0.1s">
+            <a [href]="['/product/' + product.id]">
+                <div class="product-item text-center border h-100 p-4">
+                      <img class="img-fluid mb-4 product__image" [src]="product.image" [alt]="product.name" />
+                      <span class="h6 d-inline-block mb-2">{{product.name}}</span>
+                      <span class="btn btn-outline-primary px-3">{{'seeMore' | translate}}</span>
+                </div>
+            </a>
+
+            <div class="comparator__container">
+                <p-checkbox 
+                    [(ngModel)]="product.isCompared"
+                    (onChange)="onCompare($event, product)"
+                    binary="true" 
+                    [inputId]="product.id">
+                </p-checkbox>
+                <label [htmlFor]="product.id" class="ml-2">{{'compare' | translate}}</label>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-sav></app-sav>
+
+<app-footer></app-footer>
+
+<app-collapsible-comparator 
+    *ngIf="comparedProducts.length"
+    [products]="comparedProducts"
+    (removeProduct)="handleRemoveProduct($event)">
+</app-collapsible-comparator>

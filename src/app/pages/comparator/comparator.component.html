@@ -1,0 +1,114 @@
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle"></app-subheader>
+
+<div id="comparator" class="container content">
+  <div class="comparison-container">
+
+    <div class="actions">
+      <a class="btn btn-primary clean" (click)="onCleanComparator()">
+        <i class="pi pi-trash"></i>
+        Vider le comparateur
+      </a>
+    </div>
+
+    <table class="p-table comparison-table">
+      <thead>
+        <tr>
+          <th class="hidden-xs"></th>
+          <th *ngFor="let product of emptyOrProducts">
+            <ng-container *ngIf="product; else emptyProduct">
+              <div class="product-header">
+                <img [src]="product.image" [alt]="product.name" class="product-image" />
+                <p class="product-name">{{ product.name }}</p>
+              </div>
+            </ng-container>
+            <ng-template #emptyProduct>
+              <div class="empty-slot">No Product</div>
+            </ng-template>
+          </th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let property of productProperties;">
+          <td class="property__name">{{ property.label | translate }}</td>
+          <td *ngFor="let product of emptyOrProducts">
+            
+            <ng-container *ngIf="product; else emptyValue">
+  
+              <ng-container *ngIf="isBooleanProperty(property.key); else normalValue">
+                <p-icon [ngClass]="product[property.key] ? 'pi pi-check' : 'pi pi-times'" [style.color]="product[property.key] ? 'green' : 'red'"></p-icon>
+              
+                <span *ngIf="property.key == 'acceptBundle' && product.acceptBundle">
+                  <br/>
+                  {{ 'comparatorAcceptBundleNumber' | translate: { 'nbAccept': product.nbAccept } }}
+                </span>
+                
+                <span *ngIf="property.key == 'redistributeBundle' && product.redistributeBundle">
+                  <br/>
+                  {{ 'comparatorRedistributeBundleNumber' | translate: { 'nbRedistribute': product.nbRedistribute } }}
+                </span>
+              </ng-container>
+  
+              <ng-container *ngIf="property.key === 'length'"></ng-container>
+  
+              <ng-template #normalValue>
+  
+                @if (isMultipleDimensionsProperty(property.key) && product.twiceDimensions) {
+                    @switch (property.key) {
+                      @case ('length') {
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceTicket' | translate }}
+                          {{ product['ticketLength'] || '-' }}
+                        </p>
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceCoin' | translate }}
+                          {{ product['coinLength'] || '-' }}
+                        </p>
+                      }
+                      @case ('depth') {
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceTicket' | translate }}
+                          {{ product['ticketDepth'] || '-' }}
+                        </p>
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceCoin' | translate }}
+                          {{ product['coinDepth'] || '-' }}
+                        </p>
+                      }
+                      @case ('height') {
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceTicket' | translate }}
+                          {{ product['ticketHeight'] || '-' }}
+                        </p>
+                        <p class="mb-0">
+                          {{ 'comparatorTwiceCoin' | translate }}
+                          {{ product['coinHeight'] || '-' }}
+                        </p>
+                      }
+                    }  
+                }
+                @else {
+                  <span>
+                    {{ product[property.key] || '-' }}
+                  </span>
+                }
+  
+              </ng-template>
+  
+            </ng-container>
+  
+            <ng-template #emptyValue>
+              <div class="empty-value">-</div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-sav></app-sav>
+
+<related-products></related-products>
+
+<app-footer></app-footer>

@@ -1,0 +1,39 @@
+.partners {
+
+    color: #fff;
+    padding: 10px;
+
+    &__intro {
+        position: relative;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 50px;
+            height: 8px;
+            background: yellow;
+            -webkit-border-radius: 30px;
+            border-radius: 30px;
+            bottom: -20px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+
+    &__img {
+        width: 150px;
+    }
+
+}
+
+::ng-deep {
+    .p-carousel-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

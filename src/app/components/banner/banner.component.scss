@@ -1,0 +1,247 @@
+@import '../../../palette.scss';
+
+.hero-header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('assets/banner.png') !important;
+  background-position: 35% 50% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  z-index: 1;
+  padding-top: 0;
+
+  @media (min-width: 431px) {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    padding-top: 200px;     
+  }
+
+  &:after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      display: block;
+      width: 100%; height: 100%;
+      background-color: rgba($color: #fff, $alpha: 0.5);
+      z-index: -1;
+  }
+}
+
+.highlight { 
+  color: $fern-green;
+}
+
+.banner__text {
+  font-size: 29px;
+  line-height: 58px;
+  color: #fff !important;
+
+  .text-primary {
+    display: inline-block;
+    color: #fff !important;
+    background-color: $fern-green !important;
+    padding: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 38px !important;
+    line-height: 60px;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 50px !important;
+    line-height: 80px;
+  }
+}
+
+.slider__container {
+  display: flex;
+  justify-content: center;
+}
+
+.blob__container {
+
+  position: relative;
+  
+  &::before {
+    content: '';
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 0;
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    height: 350px;
+    width: 350px;
+
+    background: $pakistan-green;
+    background-image: $gradient-bottom-left;
+
+    animation-name: blobby;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+
+    @media (min-width: 768px) {
+      width: 400px;
+      height: 400px;
+    }
+
+    @media (min-width: 1400px) {
+      width: 650px;
+      height: 650px;
+    }
+  }
+}
+
+@keyframes blobby {
+  0% {
+    border-radius: 50%;
+  }
+  20% {
+    border-radius: 41% 59% 41% 59% / 53% 51% 49% 47%;
+  }
+  40% {
+    border-radius: 43% 57% 41% 59% / 53% 52% 48% 47%;
+  }
+  80% {
+    border-radius: 48% 52% 41% 59% / 48% 58% 42% 52%;
+  }
+  100% {
+    border-radius: 54% 46% 60% 40% / 43% 55% 45% 57%;
+  }
+}
+
+.slider__img {
+
+  height: 280px;
+
+  @media (min-width: 768px) {
+    height: 350px;
+  }
+
+  @media (min-width: 1400px) {
+    height: 500px;
+  }
+}
+
+#sd {
+  &-container {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    cursor: pointer;
+  }
+}
+
+.arrow {
+  position: relative;
+  width: 42px;
+  height: 16px;
+  opacity: 0;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 21px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  &::before {
+    transform: rotate(45deg) translateX(25%);
+  }
+
+  &::after {
+    transform: rotate(-45deg) translateX(-25%);
+  }
+
+  &:nth-child(1) {
+    top: -50px;
+    opacity: 1;
+    animation: arrow2 1s ease 0s infinite;
+  }
+
+  &:nth-child(2) {
+    top: -25px;
+    animation: arrow1 1s ease 0.25s infinite;
+  }
+}
+
+@keyframes arrow1 {
+  from {
+    opacity: 0;
+    top: -25px;
+  }
+
+  to {
+    opacity: 0;
+    top: 0px;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes arrow2 {
+  from {
+    opacity: 0;
+    top: -35px;
+  }
+
+  to {
+    opacity: 0;
+    top: -10px;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+.headline-dynamic {
+  &__list {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    li {
+      height: 0;
+      color: $fern-green;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease-in-out;
+
+      &.active {
+        height: auto;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .slider__indicators {
+    display: none !important;
+  }
+}

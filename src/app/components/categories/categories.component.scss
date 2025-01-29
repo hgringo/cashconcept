@@ -1,0 +1,84 @@
+@import '../../../palette.scss';
+
+.category__image__container {
+    display: flex;
+    justify-content: center;
+}
+
+.category__image {
+    height: 400px;
+    z-index: 1;
+}
+
+.reverse {
+
+    display: flex;
+
+    .display { 
+        order: 1; 
+
+        @media (min-width: 960px) { order: 2; }
+    }
+    
+    .category__content { 
+        order:2; 
+
+        @media (min-width: 960px) { order: 1; }
+    }
+}
+
+.blob__container {
+
+    position: relative;
+    
+    &::before {
+      content: '';
+      transform: translate(-50%, -50%);
+      position: absolute;
+      z-index: 0;
+      border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+      
+      width: 400px; height: 400px;
+  
+      background: $pakistan-green;
+      background-image: $gradient-bottom-left;
+  
+      animation-name: blobby;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+      animation-direction: alternate;
+    }
+
+    &__left {
+        &::before {
+            top: 190px;
+            left: 200px;
+        }
+    }
+
+    &__right {
+        &::before {
+            bottom: -200px;
+            right: -210px;
+        }
+    }
+}
+  
+@keyframes blobby {
+0% {
+    border-radius: 50%;
+}
+20% {
+    border-radius: 41% 59% 41% 59% / 53% 51% 49% 47%;
+}
+40% {
+    border-radius: 43% 57% 41% 59% / 53% 52% 48% 47%;
+}
+80% {
+    border-radius: 48% 52% 41% 59% / 48% 58% 42% 52%;
+}
+100% {
+    border-radius: 54% 46% 60% 40% / 43% 55% 45% 57%;
+}
+}

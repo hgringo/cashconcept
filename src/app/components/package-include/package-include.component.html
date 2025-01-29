@@ -1,0 +1,28 @@
+<!-- Package Start -->
+<div class="container-fluid py-5 position-relative package-section">
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="assets/deal.mp4" type="video/mp4" />
+    </video>
+    <div class="container text-overlay">
+        <div class="row g-5 align-items-center">
+            <div class="wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="text-primary mb-4">{{ 'packageTitle' | translate }}<span class="fw-light text-dark"> {{ 'packageTitle2' | translate }}</span></h1>
+                <p class="mb-4">{{ 'packageIntro' | translate }}</p>
+                <ul class="package__list">
+                    <li class="package__item">
+                        <i class="pi pi-check-circle"></i>
+                        <span class="outline">{{ 'package1Outline' | translate }}</span> {{ 'package1' | translate }}
+                    </li>
+                    <li class="package__item">
+                        <i class="pi pi-check-circle"></i>
+                        <span class="outline">{{ 'package2Outline' | translate }}</span> {{ 'package2' | translate }}
+                    <li class="package__item">
+                        <i class="pi pi-check-circle"></i>
+                        <span class="outline">{{ 'package3Outline' | translate }}</span> {{ 'package3' | translate }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Package End -->

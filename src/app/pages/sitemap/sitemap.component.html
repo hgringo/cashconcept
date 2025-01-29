@@ -1,0 +1,40 @@
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle"></app-subheader>
+
+<div class="container-fluid content">
+    <div class="container">
+        <ul class="sitemap__list">
+            <li>
+                <a [href]="['/']">{{ 'menuHome' | translate }}</a>
+            </li>
+            <li>
+                <a [href]="['/monnayeurs-automatiques']">
+                    {{ 'menuCoinChangers' | translate }}
+                </a>
+                <ul class="sitemap__sublist">
+                    <li *ngFor="let product of coinChangers">
+                        <a [href]="['/product/' + product.id]">
+                            {{ product.name }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a [href]="['/bornes-de-commande']">
+                    {{ 'menuControlCommands' | translate }}
+                </a>
+                <ul class="sitemap__sublist">
+                    <li *ngFor="let product of controlTerminals">
+                        <a [href]="['/product/' + product.id]">
+                            {{ product.name }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a [href]="['/contact']">{{ 'menuContact' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<app-footer></app-footer>

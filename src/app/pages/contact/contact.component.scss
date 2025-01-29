@@ -1,0 +1,111 @@
+@import '../../../palette.scss';
+
+.contact {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        
+        @media (min-width: 960px) { 
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__item {
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    &__name {
+        display: inline-block;
+        font-size: 40px;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 45px; height: 3px;
+            background-color: $reseda-green;
+            position: absolute;
+            left: 0; bottom: 0;
+        }
+    }
+
+    &__phone {
+        display: block;
+        margin: 10px 0;
+        color: $reseda-green;
+        font-size: 20px;
+
+        span {
+            display: inline-block;
+            margin-left: 10px;
+            color: #000;
+        }
+    }
+
+    &__mail {
+        display: block;
+        margin: 10px 0;
+        color: $reseda-green;
+        font-size: 20px;
+
+        span {
+            display: inline-block;
+            margin-left: 10px;
+            color: #000;
+        }
+    }   
+
+
+    &__fields {
+        display: flex;
+        justify-content: space-between;        
+        flex-wrap: wrap;
+    }
+
+    &__field {
+        width: calc(50% - 50px);
+        margin-bottom: 50px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        input, textarea {
+            width: 100%;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+    }
+
+}
+
+
+.form__confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__icon {
+        font-size: 130px;
+        color: #4caf50;
+        margin-bottom: 35px;
+    }
+
+    &__message {
+        font-size: 18px;
+    }
+}

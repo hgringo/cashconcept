@@ -1,0 +1,53 @@
+
+<div class="container-fluid bg-primary hero-header">
+  <div class="container">
+      <div class="row g-5 align-items-center">
+          <div class="col-lg-6 text-center text-lg-start mb-5">
+            <h1 class="headline-wrapper display-2 text-light animated slideInRight banner__text">
+              {{ 'bannerYour' | translate }}
+              <div class="headline-dynamic">
+                <ul class="headline-dynamic__list">
+                  <li #headlineItem class="headline-dynamic__item active">              
+                    {{ 'bannerCoin' | translate }}
+                  </li>
+                  <li #headlineItem class="headline-dynamic__item">
+                    {{ 'bannerControl' | translate }}
+                  </li>
+                </ul>
+              </div>
+              {{ 'bannerFrom' | translate }}
+              <span class="text-primary">{{ 'bannerPrice' | translate }}</span>
+            </h1>
+            
+          </div>
+          <div class="col-lg-6">
+
+            <div class="blob__container">
+              <p-carousel 
+                [value]="products" 
+                [numVisible]="1" 
+                [numScroll]="1"
+                [showNavigators]="false"
+                [autoplayInterval]="3000"
+                [circular]="true" 
+                indicatorsContentClass="slider__indicators"
+              >
+                <ng-template let-product #item>
+                  <div class="slider__container">
+                    <a [href]="getTargetUrl(product)">
+                      <img class="slider__img" [src]="product.banner" [alt]="product.name" />
+                    </a>
+                  </div>
+                </ng-template>
+              </p-carousel>
+            </div>
+            
+          </div>
+      </div>
+  </div>
+
+  <div id="sd-container" (click)="scrollToContent()">
+    <div class="arrow"></div>
+    <div class="arrow"></div>
+  </div>
+</div>

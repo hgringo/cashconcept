@@ -1,0 +1,45 @@
+<div class="collapsible-comparator" [class.open]="isOpen">
+
+  <div class="container">
+
+      <!-- Collapsed View -->
+      <div class="collapsible__header" (click)="toggleOpen()">
+        <span>{{ 'products' | translate }} : {{ products.length }}</span>
+        
+        <div class="actions">
+          <button class="btn btn-primary" (click)="onGoToComparator()">
+            {{ "goToComparator" | translate }}
+          </button>
+  
+          <button class="btn btn-primary clean" (click)="onCleanComparator()">
+            <i class="pi pi-trash"></i>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Expanded View -->
+      <div class="collapsible__content" *ngIf="isOpen">
+        <div class="product__list">
+          <div class="product__item" *ngFor="let slot of [0, 1, 2, 3]; let i = index">
+            <div class="product__info" *ngIf="products[i]">
+              <img [src]="products[i].image" alt="{{ products[i].name }}" class="product__thumbnail" />
+              <span class="product__name">{{ products[i].name }}</span>
+            </div>
+            <div class="product__info empty" *ngIf="!products[i]">
+              <div class="empty-thumbnail"></div>
+              <span class="empty-placeholder">{{ 'Empty' | translate }}</span>
+            </div>
+            <div class="product__action" *ngIf="products[i]">
+              <a
+                (click)="onRemoveProduct(products[i].id)"
+                class="remove"
+              >
+                <i class="fa fa-xmark me-3"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,119 @@
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top navbar" [ngClass]="{ 'scrolled': isScrolled }">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light p-0" [ngClass]="{ 'scrolled': isScrolled }">
+
+          <div class="container">
+
+            <div class="header__top" [ngClass]="{ 'scrolled': isScrolled }">
+              <a [href]="['/']" class="navbar-brand">
+                <img src="assets/logo.png" alt="Logo" class="navbar-logo" [ngClass]="{ 'scrolled': isScrolled }" />
+              </a>
+  
+              <!-- hamburger -->
+               <div class="hamburger">
+                 <input type="checkbox" id="menu" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (change)="toggleMenu()">
+                 <label for="menu" class="icon">
+                         <div class="menu"></div>
+                 </label>
+               </div>
+            </div>
+  
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                  <a [href]="['/']" class="nav-item nav-link underlineOnHover">
+                    {{ 'menuHome'| translate }}
+                  </a>
+                  <div class="nav-item dropdown">
+  
+                      <div class="dropdow__item__with__opening__icon">
+                        <a [href]="['/monnayeurs-automatiques']" class="nav-link">
+                          {{ 'menuCoinChangers'| translate }}
+                        </a>
+  
+                        <!-- Icon to open submenu -->
+                        <p-button
+                          [icon]="isExpandedSBMonnayeurs ? 'pi pi-minus' : 'pi pi-plus'"
+                          [rounded]="true"
+                          [text]="true"
+                          (click)="toggleSBMonnayeurs()"
+                          data-bs-toggle="collapse" 
+                          data-bs-target="#monnayeurs"
+                          class="opening__submenu"
+                        />
+                      </div>
+  
+                      <div class="collapse navbar-collapse" id="monnayeurs">
+                        <div class="dropdown-menu bg-light mt-2">
+                          <!-- Submenu items -->
+                          <a *ngFor="let product of coinChangers" [href]="['/product/' + product.id]" class="dropdown-item nav-link menu__item">
+                            <div class="menu__content">
+                              <img class="img-fluid menu__image" [src]="product.image" [alt]="product.name" />
+                              <span class="product__name">{{ product.name }}</span>
+                            </div>
+                          </a>
+                      </div>
+                      </div>
+                  </div>
+  
+                  <div class="nav-item dropdown">
+  
+                    <div class="dropdow__item__with__opening__icon">
+                      
+                      <a [href]="['/bornes-de-commande']" class="nav-link">
+                        {{ 'menuControlCommands'| translate }}
+                      </a>
+  
+                      <!-- Icon to open submenu -->
+                      <p-button
+                        [icon]="isExpandedSBBornes ? 'pi pi-minus' : 'pi pi-plus'"
+                        [rounded]="true"
+                        [text]="true"
+                        (click)="toggleSBBornes()"
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#bornes"
+                        class="opening__submenu"
+                      />
+                    </div>                      
+                    
+                    <div class="collapse navbar-collapse" id="bornes">
+                      <div class="dropdown-menu column-hover bg-light mt-2">
+                          <!-- Submenu items -->
+                          <a *ngFor="let product of controlTerminals" [href]="['/product/' + product.id]" class="dropdown-item nav-link menu__item">
+                            <div class="menu__content">
+                              <img class="img-fluid menu__image" [src]="product.image" [alt]="product.name" />
+                              <span class="product__name">{{ product.name }}</span>
+                            </div>
+                          </a>
+                      </div>
+                    </div>
+                  </div>
+                  <a [href]="['/contact']" class="nav-item nav-link underlineOnHover">
+                    {{ 'menuContact'| translate }}
+                  </a>
+              
+                  <!-- Language selector -->
+                  <p-select 
+                    [options]="languages"
+                    [formControl]="control"
+                    (onChange)="switchLanguage($event.value)"
+                  >
+                    <ng-template #selectedItem let-language>
+                      <div class="language-item">
+                        <img [src]="'assets/flags/'+ language +'.svg'" class="flag-icon" [alt]="language" />
+                      </div>
+                    </ng-template>
+                  
+                    <ng-template #item let-language>
+                      <div class="language-item">
+                        <img [src]="'assets/flags/'+ language +'.svg'" class="flag-icon" [alt]="language" />
+                      </div>
+                    </ng-template>
+                  </p-select>
+                </div>
+            </div>
+          </div>
+        </nav> 
+    </div>
+</div>
+<!-- Navbar End -->

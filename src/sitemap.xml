@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://cashconcept.be/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://cashconcept.be/monnayeurs-automatiques</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- CashBox Mini -->
+    <url>
+        <loc>https://cashconcept.be/product/292af756-288c-4942-a6f3-c7d69f889529</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 3 -->
+    <url>
+        <loc>https://cashconcept.be/product/9c9172aa-d80e-4f84-a620-7dcf1c54e869</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 5 -->
+    <url>
+        <loc>https://cashconcept.be/product/597cb73c-6a8e-499e-8f5e-4fccb55879cc</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox Pro -->
+    <url>
+        <loc>https://cashconcept.be/product/a91ecc97-f2a0-47e3-820a-7a91cf3f619a</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 7 -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627b89</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 7+ -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627f70</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 8 -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627f10</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox S -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-4a60b9627d78</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox Order 2 -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627f4z</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox Order 4 -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627f7a</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://cashconcept.be/bornes-de-commande</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://cashconcept.be/contact</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://cashconcept.be/comparator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://cashconcept.be/sitemap</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+</urlset>

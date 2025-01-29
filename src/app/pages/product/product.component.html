@@ -1,0 +1,245 @@
+@if (product) {
+  <app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" [className]="subHeaderClassName"></app-subheader>
+
+  <div class="container content">
+  
+    <section class="product__display">
+  
+      <div class="left__container">
+        <!-- Vertical Thumbnail Carousel -->
+        <div class="thumbnail-carousel vertical">
+          <button *ngIf="product.gallery && product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()">
+            <i class="arrow pi pi-arrow-up"></i>
+          </button>
+          <div class="carousel-track">
+            <div
+              *ngFor="let item of displayedThumbnails; let i = index"
+              class="thumbnail"
+              [class.active]="i + carouselStartIndex === activeThumbnailIndex"
+              (click)="setActiveThumbnail(i + carouselStartIndex)"
+            >
+              <!-- Image Thumbnail -->
+              <img
+                *ngIf="!item.isVideo"
+                [src]="item.thumbnail"
+                [alt]="'Thumbnail ' + (carouselStartIndex + i + 1)"
+              />
+      
+              <!-- Video Thumbnail with Player Icon -->
+              <div class="video-thumbnail" *ngIf="item.isVideo">
+                <img [src]="item.thumbnail" [alt]="'Video Thumbnail ' + (carouselStartIndex + i + 1)" />
+                <span class="play-icon">
+                  <i class="pi pi-play"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <button *ngIf="product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowDownDisabled() }" class="carousel-nav next" (click)="nextThumbnail()">
+            <i class="arrow pi pi-arrow-down"></i>
+          </button>
+        </div>
+      
+        <!-- Main Display (Image or Video) -->
+        <div class="product__img">
+          <!-- Display Image -->
+          <img
+            *ngIf="!isVideoActive"
+            [src]="activeImage"
+            [alt]="'Product Image'"
+            class="product__img__main"
+          />
+      
+          <!-- Display Video -->
+          <video
+            *ngIf="isVideoActive"
+            [src]="activeVideo"
+            controls
+            autoplay
+            preload="auto"
+            class="product__video__main"
+          ></video>
+      
+          <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()">
+          </p-button> 
+          <div class="share__menu" [ngClass]="{ 'open': isShareMenuOpen }">
+            <share-buttons
+              class="share__buttons"
+              [include]="['facebook','messenger','whatsapp','print','copy']"
+              [show]="5"
+            ></share-buttons> 
+          </div>   
+        </div>
+      </div>    
+      
+      <div class="right__container">
+  
+        <div class="product__info">
+  
+          <h1 class="mb-5">{{product.name}}</h1>
+  
+          <ul id="features-list">
+  
+            <li *ngIf="product.acceptVerify">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureAcceptVerify' | translate }}
+            </li>
+            <li *ngIf="product.acceptBundle">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureAcceptation' | translate: { nbAccept: product.nbAccept } }}
+            </li>
+            @if (product.redistributeAll) {
+              <li>
+                <i class="pi pi-minus"></i>
+                {{ 'productFeatureRedistributeAll' | translate }}
+              </li>
+            }
+            @else {
+              <li>
+                <i class="pi pi-minus"></i>
+                {{ 'productFeatureRedistribute' | translate: { nbRedistribute: product.nbRedistribute, typeOfTicket: product.typeOfTicket} }}
+              </li>
+            }
+            <li *ngIf="product.recycler">
+              <p class="mb-0">
+                <i class="pi pi-minus"></i>
+                @if (product.nbRecycler > 1) {
+                  <span class="headline ml">{{ 'productFeatureRecyclers' | translate: { nbRecycler: product.nbRecycler } }}</span>
+                }
+                @else {
+                  <span class="headline ml">{{ 'productFeatureRecycler' | translate: { nbRecycler: product.nbRecycler } }}</span>
+                }
+                {{ 'productFeatureRecycler2' | translate: { nbTicket: product.nbTicket, nbTicket2: product.nbTicket2} }}
+              </p>
+            </li>
+            <li *ngIf="product.redistributeBundle">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureRedistributeBundle' | translate: { nbRedistribute: product.nbRedistributeBundle } }}
+            </li>
+            <li *ngIf="product.fakeMoney">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureFake' | translate }}
+            </li>
+            <li>
+              <i class="pi pi-minus"></i>
+              @if (product.nbDistributor && product.nbDistributor > 1) {
+                <span class="headline">{{ 'productFeatureDistributors' | translate: { nbDistributor: product.nbDistributor} }}</span>
+              }
+              @else {
+                <span class="headline">{{ 'productFeatureDistributor' | translate: { nbDistributor: product.nbDistributor} }}</span>
+              }
+              {{ 'productFeatureDistributor2' | translate }}
+            </li>
+            <li>
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureShielding' | translate: { shieldingMM: product.shieldingMM} }}
+            </li>
+            <li *ngIf="product.transponder">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureTransponder' | translate }}
+              {{ 'productFeatureSafeBox' | translate }}
+            </li>
+            @if (!product.twiceDimensions) {
+              <li>
+                <i class="pi pi-minus"></i>
+                {{ 'productFeatureDimensions' | translate: { length: product.length, depth: product.depth, height: product.height} }}
+              </li>
+            }
+            @else {
+              <li>
+                <i class="pi pi-minus"></i>
+                {{ 'productFeatureDimensionsTicket' | translate: { length: product.ticketLength, depth: product.ticketDepth, height: product.ticketHeight} }}
+              </li>
+              <li>
+                <i class="pi pi-minus"></i>
+                {{ 'productFeatureDimensionsCoin' | translate: { length: product.coinLength, depth: product.coinDepth, height: product.coinHeight} }}
+              </li>
+            }
+            <li>
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureWeight' | translate: { weight: product.weight} }}
+            </li>
+            <li>
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureElse' | translate }}
+            </li>
+            <li>
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureBestPrice' | translate }}
+            </li>
+            <li *ngIf="product.os">
+              <i class="pi pi-minus"></i>
+              {{ 'productFeatureOS' | translate }}
+              <span class="headline headline--black">
+                {{ 'productFeatureOS2' | translate }}
+              </span>
+              <img src="assets/tux.svg" alt="tux" class="tux" />
+            </li>
+  
+            <div class="horizontal__separator"></div>
+  
+            <span class="mb-4 included__label">{{'included' | translate}}</span>
+  
+            <li *ngIf="product.monitor">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureMonitor' | translate: { inche: product.inche} }}
+              
+            </li>
+            <li *ngIf="product.laptop">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureDesktop' | translate: { inche: product.inche} }}
+              
+            </li>
+            <li *ngIf="product.screen">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureScreen' | translate: { screenInche: product.screenInche} }}
+              
+            </li>
+            <li *ngIf="product.screenTactical">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureScreenTactical' | translate: { screenTacticalInche: product.screenTacticalInche} }}
+              
+            </li>
+            <li *ngIf="product.program">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureCashRegisterProgram' | translate }}
+              
+            </li>
+            <li *ngIf="product.printer">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeaturePrinter' | translate }}
+              
+            </li>
+            <li *ngIf="product.calculator">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureCalculator' | translate }}
+              
+            </li>
+            <li *ngIf="product.application">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureApp' | translate }}
+              
+            </li>
+            <li *ngIf="product.leds">
+              <i class="pi pi-check included"></i>
+              {{ 'productFeatureLeds' | translate }}
+              
+            </li>
+          </ul>
+  
+          <a *ngIf="product.technicalFeatures" (click)="downloadTechnicalFeatures()" class="btn__dowload btn btn-primary diagonal-close-button" >
+            <i class="fa fa-download me-3"></i>
+            {{'downloadTechnicalInfo' | translate}}
+          </a>   
+        </div>
+      </div>
+  
+    </section>
+  </div>
+  
+  <app-package-include></app-package-include>
+  
+  <related-products [currentProduct]="product"></related-products>
+  
+  <app-footer></app-footer>
+}
+

@@ -1,0 +1,30 @@
+@defer (hydrate never) {
+<div class="related__products mt-5">
+    <div class="container">
+        <p-carousel 
+            [value]="products" 
+            [numVisible]="3" 
+            [numScroll]="1"
+            [showNavigators]="false"
+            [circular]="true"
+            [autoplayInterval]="3000"
+            [responsiveOptions]="responsiveOptions"
+            indicatorsContentClass="slider__indicators"
+        >
+                  <ng-template let-product #item>
+                    <div class="slider__container">
+                        <div class="wow fadeIn product__container" data-wow-delay="0.1s">
+                            <a [href]="['/product/' + product.id]">
+                                <div class="product-item text-center border h-100 p-4">
+                                    <img class="img-fluid mb-4 product__image" [src]="product.image" [alt]="product.name" />
+                                    <span class="h6 d-inline-block mb-2">{{product.name}}</span>
+                                    <span class="btn btn-outline-primary w-100 px-3">{{'seeMore' | translate}}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                  </ng-template>
+        </p-carousel>
+    </div>
+</div>
+}

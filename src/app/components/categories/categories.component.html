@@ -1,0 +1,46 @@
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="category__image__container blob__container blob__container__left">
+                    <div class="background-circle"></div>
+                    <a [href]="['/monnayeurs-automatiques']">
+                        <img class="category__image img-fluid animated pulse infinite" loading="lazy" src="assets/products/CashBox 3/CashBox 3_side_face.png" alt="CashBox 3" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="text-primary mb-4">{{ 'coinTitle'  | translate }} <span class="fw-light text-dark">{{ 'coinTitle2'  | translate }}</span></h1>
+                <p class="mb-3">{{ 'coin'  | translate }}</p>
+                <p class="mb-3">{{ 'coin2' | translate }}</p>
+                <p class="mb-3">{{ 'coin3' | translate }}</p>
+                <p class="mb-3">{{ 'coin4' | translate }}</p>
+                <a [href]="['/monnayeurs-automatiques']" class="btn btn-primary py-2 px-4 mt-4">
+                    <span>{{'categoryDiscover' | translate}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-5 reverse">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn category__content" data-wow-delay="0.5s">
+                <h1 class="text-primary mb-4">{{ 'controlTitle'  | translate }} <span class="fw-light text-dark">{{ 'controlTitle2'  | translate }}</span></h1>
+                <p class="mb-3">{{ 'control'  | translate }}</p>
+                <p class="mb-3">{{ 'control2' | translate }}</p>
+                <p class="mb-3">{{ 'control3' | translate }}</p>
+                <a [href]="['/bornes-de-commande']" class="btn btn-primary py-2 px-4 mt-4">{{'categoryDiscover' | translate}}</a>
+            </div>
+            <div class="col-lg-6 wow fadeIn display" data-wow-delay="0.1s">
+                <span class="category__image__container blob__container blob__container__right">
+                    <a [href]="['/bornes-de-commande']">
+                        <img class="category__image img-fluid animated pulse infinite" loading="lazy" src="assets/products/CashBox Order 2-4/CashBox Order 2_side_face.png" alt="CashBox Order 2" />
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->

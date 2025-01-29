@@ -1,0 +1,54 @@
+@import '../../../palette.scss';
+
+.customers {
+    position: relative;
+}
+
+.customer {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 0 !important;
+    }
+
+    &__image {
+        height: 100px;
+    }
+}
+
+::ng-deep {
+
+    .customers {
+
+        .p-ripple {
+            position: inherit !important;
+        }
+
+        .p-carousel-prev-button .p-button-text.p-button-secondary {
+            left: calc(50% - 40px);
+            bottom: 7px;
+        } 
+
+        .p-carousel-next-button .p-button-text.p-button-secondary {
+            left: calc(50% + 40px);
+            bottom: 0;
+        } 
+
+        .p-button-text.p-button-secondary {
+            background-color: transparent !important;
+            border: 0 !important;
+            position: absolute !important;
+            transform: translateX(-50%);
+        }
+
+        .arrow {
+            width: 40px; height: 40px;
+
+            &__right {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

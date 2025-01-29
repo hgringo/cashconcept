@@ -1,0 +1,37 @@
+@import '../../../palette.scss';
+  
+/*** Product ***/
+.product-item {
+  display: flex;
+  flex-direction: column;
+  transition: .1s;
+}
+
+.product-item:hover {
+  border-width: 0 !important;
+  box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+
+  .btn {
+    color: var(--bs-white);
+    background: $fern-green;
+  }
+}
+
+.product__image {
+  margin-top: 20px;
+}
+
+.product__container {
+  position: relative;
+}
+
+.comparator__container {
+  position: absolute;
+  top: 10px; left: 20px;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-left: 10px;
+  }
+}

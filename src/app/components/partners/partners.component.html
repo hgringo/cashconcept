@@ -1,0 +1,21 @@
+<div class="partners">
+
+    <p class="partners__intro">Notre priorité, vous satisfaire</p>
+  
+    <p>.......</p>
+  
+    <p-carousel 
+      [value]="partners"
+      [numVisible]="4" 
+      [numScroll]="1"
+      [circular]="true"
+      autoplayInterval="2000"
+      contentClass="partners__items"
+      [responsiveOptions]="partnersResponsiveOptions" 
+      >
+        <ng-template let-partner pTemplate="item">
+            <img class="partners__img" [src]="partner.url" [alt]="partner.name" />
+        </ng-template>
+  </p-carousel>
+  
+  </div>

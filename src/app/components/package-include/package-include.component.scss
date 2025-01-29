@@ -1,0 +1,57 @@
+@import '../../../palette.scss';
+
+.package {
+
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__item {
+        margin-bottom: 15px;
+    
+        i {
+            color: $fern-green;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .outline {
+            font-weight: bold;
+        }
+    }
+
+}
+
+.package-section {
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.text-overlay {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 1);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    @media (min-width: 768px) {
+        max-width: 600px;
+    }
+
+    @media (min-width: 960px) {
+        max-width: 1000px;
+    }
+}

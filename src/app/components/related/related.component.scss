@@ -1,0 +1,44 @@
+@import '../../../palette.scss';
+
+::ng-deep {
+    .slider__container {
+
+        .product-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          transition: .1s;
+          width: 100%;
+        
+            &:hover {
+                border-width: 0 !important;
+                box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+
+                .btn {
+                    color: var(--bs-white);
+                    background: $fern-green;
+                }
+            }
+        }
+            
+        .product__image {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 20px;
+
+            @media (min-width: 960px) {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
+            @media (min-width: 1400px) {
+                max-width: 400px;
+                max-height: 400px;
+            }
+        }
+    
+        .product__container {
+            position: relative;
+        }
+    }
+}

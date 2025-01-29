@@ -1,0 +1,102 @@
+@import '../../../palette.scss';
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 768px) {
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+        overflow: hidden;
+    }
+  }
+  
+@media (min-width: 768px) {
+    .column-single {
+        justify-content: flex-start;
+    }
+    
+    .column-double {
+        justify-content: space-between;
+    }
+}
+  
+  /* Images */
+  .image {
+    max-width: 100%;
+    max-height: 40%;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: swipeIn 1s forwards;
+  }
+  
+  /* Assign specific delays to create sequential swipe effect */
+  .img1 {
+    animation-delay: 0.5s;
+  }
+  
+  .img2 {
+    animation-delay: 1.5s;
+  }
+  
+  .img3 {
+    animation-delay: 2.5s;
+  }
+  
+  /* Swipe-in animation */
+  @keyframes swipeIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+.blob__container {
+    &::before {
+        display: none;
+
+        @media (min-width: 768px) {
+            display: block;
+            top: 50%;
+            left: 50%;
+        }
+    }
+}
+
+.activity {
+    &__list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    &__icon {
+        height: 40px; width: 40px;
+        margin-right: 15px;
+    }
+}

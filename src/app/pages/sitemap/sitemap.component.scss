@@ -1,0 +1,20 @@
+@import '../../../palette.scss';
+
+.sitemap {
+    &__list {
+
+        & > li {
+            list-style: none;
+            font-size: 20px;
+            padding: 10px 0;
+        }
+
+        a {
+            color: $reseda-green !important;
+        }
+    }
+
+    &__sublist {
+        margin-top: 15px;
+    }
+}
