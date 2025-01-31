@@ -56,6 +56,7 @@
   "contactUs": "Nous contacter",
   "compare": "Comparer",
   "empty": "Vide",
+  "emptyComparator": "Vider le comparateur",
   "seeMore": "En savoir plus",
   "included": "INCLUS",
   "controlPageTitle": "Nos bornes",
@@ -169,6 +170,7 @@
   "seoCoinChangerTitle": "CashConcept - Monnayeurs Automatiques",
   "seoCoinChangerDesc": "Découvrez les monnayeurs automatiques CashBox. Des solutions de paiement innovantes proposées par CashConcept pour optimiser votre expérience client et simplifier vos transactions.",
   "seoControlTitle": "CashConcept - Bornes de commande",
-  "seoControlDesc": "Découvrez les bornes de commande CashBox. Des solutions de paiement innovantes proposées par CashConcept pour optimiser votre expérience client et simplifier vos transactions."
-
+  "seoControlDesc": "Découvrez les bornes de commande CashBox. Des solutions de paiement innovantes proposées par CashConcept pour optimiser votre expérience client et simplifier vos transactions.",
+  "discoverFacebook": "Découvrez nos installations",
+  "send": "Envoyer le message"
 }

@@ -1,5 +1,5 @@
 import { Component, inject, makeStateKey, REQUEST_CONTEXT, TransferState, VERSION, PLATFORM_ID } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { HeaderComponent } from './components/header/header.component';
 import { CtaContactComponent } from './components/cta-contact/cta-contact.component';
@@ -20,9 +20,6 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent {
 
-  headerUniqueId = `element-${Math.random().toString(36).substr(2, 9)}`;
-  ctaUniqueId = `element-${Math.random().toString(36).substr(2, 9)}`;
-
   private readonly platform = inject(PLATFORM_ID);
 
   version = VERSION.full;
@@ -31,7 +28,8 @@ export class AppComponent {
   serverKey = makeStateKey<string>('server');
 
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) {
 
     const reqContext = inject(REQUEST_CONTEXT, { optional: true }) as {
@@ -51,11 +49,12 @@ export class AppComponent {
     // LANGUAGE MANAGEMENT
     // ===================
 
-    this.translate.addLangs(['en', 'fr', 'nl']);
+    this.translate.addLangs(['fr', 'en', 'nl']);
 
     if (isPlatformBrowser(this.platform)) { 
 
       const storedLang = localStorage.getItem('language');
+      this.translate.setDefaultLang('fr');
   
       if (storedLang) {
         this.translate.use(storedLang);
@@ -63,7 +62,7 @@ export class AppComponent {
       else {  
         const browserLang = this.translate.getBrowserLang();
         const defaultLang = browserLang?.match(/en|fr|nl/) ? browserLang : 'fr';
-        
+
         this.translate.use(defaultLang);
         localStorage.setItem('language', defaultLang);
       }

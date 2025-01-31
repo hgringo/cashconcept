@@ -16,14 +16,6 @@
     color: $fern-green;
 }
 
-.footer .btn.btn-link::before {
-    position: relative;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    margin-right: 10px;
-}
-
 .footer .btn.btn-link:hover {
     letter-spacing: 1px;
     box-shadow: none;
@@ -66,7 +58,7 @@
             bottom: -10px; left: 0;
             display: block;
             width: 60px; height: 3px;
-            background-color: $pakistan-green;
+            background-color: $fern-green;
         }
     }
 

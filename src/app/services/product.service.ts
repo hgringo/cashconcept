@@ -13,7 +13,8 @@ export class ProductService {
           id: "65648d9c-2896-48e8-a6fd-4a60b9627d78", 
           name: 'CashBox S', 
           type: ProductType.COIN_CHANGER,
-          image: 'assets/products/CashBox S/CashBox S_front.png',
+          image:  'assets/products/CashBox S/CashBox S_front.png',
+          menu:   'assets/menu/CashBox S_front.webp',
           banner: 'assets/banner_slider/CashBox S_front.svg',
           gallery: [
             { src: "assets/products/CashBox S/CashBox S_front.png", thumbnail: "assets/products/CashBox S/thumbnails/CashBox S_front.png", isVideo: false },
@@ -63,6 +64,7 @@ export class ProductService {
           name: 'CashBox Mini', 
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox Mini/CashBox Mini_front.png',
+          menu:   'assets/menu/CashBox Mini_front.webp',
           banner: 'assets/banner_slider/CashBox Mini_front.svg',
           gallery: [
             { src: "assets/products/CashBox Mini/CashBox Mini_front.png", thumbnail: "assets/products/CashBox Mini/thumbnails/CashBox Mini_front.webp", isVideo: false },
@@ -107,6 +109,7 @@ export class ProductService {
           name: 'CashBox 3',
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox 3/CashBox 3_front.png',
+          menu:   'assets/menu/CashBox 3_front.webp',
           banner: 'assets/banner_slider/CashBox 3_front.svg',
           gallery: [
             { src: "assets/products/CashBox 3/CashBox 3_front.png", thumbnail: "assets/products/CashBox 3/thumbnails/CashBox 3_front.png", isVideo: false },
@@ -152,6 +155,7 @@ export class ProductService {
           name: 'CashBox 5', 
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox 5/CashBox 5_front.png',
+          menu:   'assets/menu/CashBox 5_front.webp',
           banner: 'assets/banner_slider/CashBox 5_front.svg',
           gallery: [
             { src: "assets/products/CashBox 5/CashBox 5_front.png", thumbnail: "assets/products/CashBox 5/thumbnails/CashBox 5_front.png", isVideo: false },
@@ -163,7 +167,7 @@ export class ProductService {
             { src: "assets/products/CashBox 5/CashBox-5_tamines.png", thumbnail: "assets/products/CashBox 5/thumbnails/CashBox-5_tamines.png", isVideo: false },
             { src: "assets/products/CashBox 5/CashBox 5_on_base.png", thumbnail: "assets/products/CashBox 5/thumbnails/CashBox 5_on_base.png", isVideo: false },
             { src: "assets/products/CashBox 5/CashBox-5_placed_on_2.png", thumbnail: "assets/products/CashBox 5/thumbnails/CashBox-5_placed_on_2.png", isVideo: false },
-            { src: "assets/products/CashBox 5/CashBox 5_Demo.mp4", thumbnail: 'assets/products/CashBox 5/thumbnails/CashBox 5_Demo.png', isVideo: true }
+            { src: "RTOwGZIoHeQ", thumbnail: 'assets/products/CashBox 5/thumbnails/CashBox 5_Demo.png', isVideo: true }
           ],
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox 5/technical_features/fr/Fiche technique CashBox 5.pdf"},
@@ -202,6 +206,7 @@ export class ProductService {
           name: 'CashBox Pro', 
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox Pro/CashBox Pro_front.svg', 
+          menu:   'assets/menu/CashBox Pro_front.webp',
           banner: 'assets/banner_slider/CashBox Pro_front.svg', 
           isCompared: false,
           gallery: [
@@ -249,6 +254,7 @@ export class ProductService {
           name: 'CashBox 7', 
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox 7/CashBox 7_front.png',
+          menu:   'assets/menu/CashBox 7_front.webp',
           banner: 'assets/banner_slider/CashBox 7_front.svg',
           gallery: [
             { src: "assets/products/CashBox 7/CashBox 7_front.png", thumbnail: "assets/products/CashBox 7/thumbnails/CashBox 7_front.png", isVideo: false },
@@ -303,6 +309,7 @@ export class ProductService {
           name: 'CashBox 7+', 
           type: ProductType.COIN_CHANGER,
           image: 'assets/products/CashBox 7+/CashBox 7+.svg',
+          menu:   'assets/menu/CashBox 7+_front.webp',
           banner: 'assets/banner_slider/CashBox 7+_front.svg',
           gallery: [
             { src: "assets/products/CashBox 7+/CashBox 7+.png", thumbnail: "assets/products/CashBox 7+/thumbnails/CashBox 7+.png", isVideo: false },
@@ -352,7 +359,8 @@ export class ProductService {
           id: "65648d9c-2896-48e8-a6fd-7820b9627f10", 
           name: 'CashBox 8', 
           type: ProductType.COIN_CHANGER,
-          image: 'assets/products/CashBox 8/CashBox 8_2.svg', 
+          image: 'assets/products/CashBox 8/CashBox 8_2.svg',
+          menu:   'assets/menu/CashBox 8_front.webp',
           banner: 'assets/banner_slider/CashBox 8_front.svg', 
           gallery: [
             { src: "assets/products/CashBox 8/CashBox 8.png", thumbnail: "assets/products/CashBox 8/thumbnails/CashBox 8.png", isVideo: false },
@@ -403,6 +411,7 @@ export class ProductService {
           name: 'CashBox Order 2', 
           type: ProductType.CONTROL_TERMINAL,
           image: 'assets/products/CashBox Order 2-4/CashBox Order 2_2_front.png',
+          menu:   'assets/menu/CashBox Order 2_2_front.webp',
           banner: 'assets/banner_slider/CashBox Order 2_front.svg',
           gallery: [
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_front.png', isVideo: false },
@@ -411,6 +420,8 @@ export class ProductService {
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_2_side_face.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_2_side_face.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 4_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 4_front.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 4_2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 4_2_front.png', isVideo: false },
+            { src: 'assets/products/CashBox Order 2-4/CashBox Order - Fastfood.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order - Fastfood.png', isVideo: false },
+            { src: 'assets/products/CashBox Order 2-4/CashBox Order - Fastfood_2.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order - Fastfood_2.png', isVideo: false }
           ],
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Order 2-4/technical_features/fr/Fiche technique CashBox Order 2.pdf"},
@@ -448,14 +459,17 @@ export class ProductService {
           name: 'CashBox Order 4', 
           type: ProductType.CONTROL_TERMINAL,
           image: 'assets/products/CashBox Order 2-4/CashBox Order 4_2_front.png',
+          menu:   'assets/menu/CashBox Order 4_2_front.webp',
           banner: 'assets/banner_slider/CashBox Order 4_front.svg',
           gallery: [
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 4_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 4_front.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 4_2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 4_2_front.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_front.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_side_face.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_side_face.png', isVideo: false },
-            { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_2_side_face.png', isVideo: false },
+            { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_2_front.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_2_front.png', isVideo: false },
             { src: 'assets/products/CashBox Order 2-4/CashBox Order 2_2_side_face.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order 2_2_side_face.png', isVideo: false },
+            { src: 'assets/products/CashBox Order 2-4/CashBox Order - Fastfood.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order - Fastfood.png', isVideo: false },
+            { src: 'assets/products/CashBox Order 2-4/CashBox Order - Fastfood_2.png', thumbnail: 'assets/products/CashBox Order 2-4/thumbnails/CashBox Order - Fastfood_2.png', isVideo: false }
           ],
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Order 2-4/technical_features/fr/Fiche technique CashBox Order 4.pdf"},

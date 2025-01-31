@@ -7,7 +7,7 @@
 $background-color: #fff;
 
 html, body { 
-    background-color: $background-color; 
+    background-color: $background-color;
     width: 100%;
     margin: 0;
 }
@@ -115,24 +115,6 @@ p-scrolltop {
     }
 }
 
-
-// *************
-
-/********** Template CSS **********/
-/*** Spinner ***/
-#spinner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease-out, visibility 0s linear .5s;
-    z-index: 99999;
-}
-
-#spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
-    opacity: 1;
-}
-
 img.animated.pulse {
     animation: pulse 3s infinite;
 }
@@ -141,124 +123,20 @@ img.animated.pulse {
 .btn {
     font-weight: 500;
     transition: .5s;
-}
 
-
-.btn.btn-primary {
-    color: var(--bs-white);
-    background-color: $fern-green;
-    border: 2px solid $fern-green;
-
-    @media (min-width: 960px) { 
-        &:hover,
-        &:focus {
-            color: $fern-green;
-            background-color: var(--bs-white);
-            box-shadow: 0 1em 1em -0.4em rgba(0,0,0,0.4);
-            transform: translateY(-0.25em);
-        }
-    }
-}
-
-.btn-square {
-    width: 38px;
-    height: 38px;
-}
-
-.btn-sm-square {
-    width: 32px;
-    height: 32px;
-}
-
-.btn-lg-square {
-    width: 48px;
-    height: 48px;
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-    border-radius: 50px;
-}
-
-
-/*** Contact ***/
-.contact-info-item::before {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(255, 255, 255, .1);
-    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
-}
-
-.contact-info-item .border {
-    position: relative;
-    border-color: rgba(255, 255, 255, .2) !important;
-    z-index: 1;
-}
-
-
-
-.blob__container {
-
-    position: relative;
+    &.btn-primary {
+        color: var(--bs-white);
+        background-color: $fern-green;
+        border: 2px solid $fern-green;
     
-    &::before {
-      content: '';
-      transform: translate(-50%, -50%);
-      position: absolute;
-      z-index: 0;
-      border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
-      
-      width: 400px; height: 400px;
-  
-      background: $pakistan-green;
-      background-image: $gradient-bottom-left;
-  
-      animation-name: blobby;
-      animation-duration: 4s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease;
-      animation-direction: alternate;
-    }
-
-    &__left {
-        &::before {
-            top: 190px;
-            left: 200px;
+        @media (min-width: 960px) { 
+            &:hover,
+            &:focus {
+                color: $fern-green;
+                background-color: var(--bs-white);
+                box-shadow: 0 1em 1em -0.4em rgba(0,0,0,0.4);
+                transform: translateY(-0.25em);
+            }
         }
     }
-
-    &__right {
-        &::before {
-            bottom: -200px;
-            right: -210px;
-        }
-    }
-}
-  
-@keyframes blobby {
-0% {
-    border-radius: 50%;
-}
-20% {
-    border-radius: 41% 59% 41% 59% / 53% 51% 49% 47%;
-}
-40% {
-    border-radius: 43% 57% 41% 59% / 53% 52% 48% 47%;
-}
-80% {
-    border-radius: 48% 52% 41% 59% / 48% 58% 42% 52%;
-}
-100% {
-    border-radius: 54% 46% 60% 40% / 43% 55% 45% 57%;
-}
 }

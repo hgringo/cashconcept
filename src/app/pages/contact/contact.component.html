@@ -11,11 +11,11 @@
                 <div class="contact__item">
                     <p class="contact__name">Olivier</p>
                     <a class="contact__phone" href="tel:{{environment.phoneNumberOlivier}}">
-                        <i class="fa-solid fa-phone"></i>
+                        <fa-icon [icon]="faPhone"></fa-icon>
                         <span>{{ environment.phoneNumberOlivier }}</span>
                     </a>
                     <a class="contact__mail" href="mailto:{{environment.mailOlivier}}">
-                        <i class="fa-solid fa-envelope"></i>
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
                         <span>{{ environment.mailOlivier }}</span>
                     </a>
                 </div>
@@ -23,11 +23,11 @@
                 <div class="contact__item">
                     <p class="contact__name">Pierre</p>
                     <a class="contact__phone" href="tel:{{environment.phoneNumberPierre}}">
-                        <i class="fa-solid fa-phone"></i>
+                        <fa-icon [icon]="faPhone"></fa-icon>
                         <span>{{ environment.phoneNumberPierre }}</span>
                     </a>
                     <a class="contact__mail" href="mailto:{{environment.mailPierre}}">
-                        <i class="fa-solid fa-envelope"></i>
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
                         <span>{{ environment.mailPierre }}</span>
                     </a>
                 </div>
@@ -111,7 +111,10 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit" [disabled]="contactForm.invalid" (click)="onSubmit()" >Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit" [disabled]="contactForm.invalid" (click)="onSubmit()">
+                                    <fa-icon [icon]="faPaperPlane"></fa-icon>
+                                    {{ 'send' | translate }}
+                                </button>
                             </div>
                         </div>
                     </form>

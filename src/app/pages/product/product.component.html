@@ -6,11 +6,14 @@
     <section class="product__display">
   
       <div class="left__container">
+        
         <!-- Vertical Thumbnail Carousel -->
         <div class="thumbnail-carousel vertical">
+          
           <button *ngIf="product.gallery && product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()">
             <i class="arrow pi pi-arrow-up"></i>
           </button>
+
           <div class="carousel-track">
             <div
               *ngFor="let item of displayedThumbnails; let i = index"
@@ -40,6 +43,7 @@
         </div>
       
         <!-- Main Display (Image or Video) -->
+
         <div class="product__img">
           <!-- Display Image -->
           <img
@@ -50,15 +54,17 @@
           />
       
           <!-- Display Video -->
-          <video
-            *ngIf="isVideoActive"
+          <iframe 
+            *ngIf="isVideoActive && activeVideo"
+            style="width: 100%;"
+            height="400"
             [src]="activeVideo"
-            controls
-            autoplay
-            preload="auto"
-            class="product__video__main"
-          ></video>
+            frameborder="0"
+            webkitallowfullscreen mozallowfullscreen allowfullscreen
+          >
+          </iframe>
       
+          <!-- Share options -->
           <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()">
           </p-button> 
           <div class="share__menu" [ngClass]="{ 'open': isShareMenuOpen }">

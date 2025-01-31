@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { Component, HostListener, inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { ProductService } from 'app/services/product.service';
 import { IProduct, ProductType } from 'app/types/product';
@@ -6,24 +6,25 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SelectModule } from 'primeng/select';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { languages } from 'app/types/language';
 import { environment } from 'environments/environment';
 
 @Component({
-  selector: 'app-header',
   standalone: true,
+  selector: 'header',
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
     TranslateModule,
-    SelectModule
+    SelectModule,
+    NgOptimizedImage
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  host: {'collision-id': 'header-1'}
 })
 export class HeaderComponent implements OnInit {
 

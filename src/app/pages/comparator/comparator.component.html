@@ -5,8 +5,8 @@
 
     <div class="actions">
       <a class="btn btn-primary clean" (click)="onCleanComparator()">
-        <i class="pi pi-trash"></i>
-        Vider le comparateur
+        <fa-icon [icon]="faTrash"></fa-icon>
+        {{ 'emptyComparator' | translate }}
       </a>
     </div>
 
@@ -22,7 +22,7 @@
               </div>
             </ng-container>
             <ng-template #emptyProduct>
-              <div class="empty-slot">No Product</div>
+              <div class="empty-slot">{{ 'empty' | translate }}</div>
             </ng-template>
           </th>
         </tr>

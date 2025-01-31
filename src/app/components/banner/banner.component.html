@@ -35,7 +35,13 @@
                 <ng-template let-product #item>
                   <div class="slider__container">
                     <a [href]="getTargetUrl(product)">
-                      <img class="slider__img" [src]="product.banner" [alt]="product.name" />
+                      <img 
+                        class="slider__img" 
+                        [ngSrc]="product.banner"
+                        width="350"
+                        height="500"
+                        [alt]="product.name" 
+                        priority />
                     </a>
                   </div>
                 </ng-template>

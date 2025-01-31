@@ -171,17 +171,6 @@
     }
 }
 
-.menu__image {
-
-    max-width: 20%;
-
-    @media (min-width: 960px) {
-        display: block;
-        height: 60px;
-        max-width: 100%;
-    }
-}
-
 .menu-toggle-icon {
     font-size: 1.5rem;
     color: #333; /* Adjust as needed */

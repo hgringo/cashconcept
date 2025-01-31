@@ -30,10 +30,10 @@
         background-image: url('assets/subheader/CashBox_3.png') !important;
     }
    
-    // &.CashBox_S {
-    //     background-image: url('assets/subheader/CashBox_S.jpeg') !important;
-    //     background-position: center 50% !important
-    // }
+    &.CashBox_S {
+        background-image: url('assets/subheader/CashBox_S.png') !important;
+        background-position: center 60% !important
+    }
 
     @media (min-width: 768px) {
         height: 100vh;

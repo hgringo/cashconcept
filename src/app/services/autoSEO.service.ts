@@ -50,7 +50,7 @@ export class AutoSEOService{
         this.renderer = this.rendererFactory.createRenderer(null, null);
     }
 
-    prepareTranslatedData(pageType: PageTYPE, name?: string) {
+    prepareSEO(pageType: PageTYPE, name?: string) {
 
         switch (pageType) {
 
@@ -64,6 +64,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbCoinChanger'), url: `${environment.baseUrl}/monnayeurs-automatiques` },
                         { name: name, url: `${environment.baseUrl}/monnayeurs-automatiques${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -78,6 +79,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbCoinChanger'), url: `${environment.baseUrl}/bornes-de-commande` },
                         { name: name, url: `${environment.baseUrl}/bornes-de-commande${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -91,6 +93,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
                         { name: this.translate.instant('seoBreadCrumbComparator'), url: `${environment.baseUrl}${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -104,6 +107,8 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
                         { name: this.translate.instant('seoBreadCrumbSiteMap'), url: `${environment.baseUrl}${this.router.url}` }
                     ];
+                    
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -116,6 +121,8 @@ export class AutoSEOService{
                     this.seoBreadCrumb = [
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl }
                     ];
+                    
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -129,6 +136,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
                         { name: this.translate.instant('seoBreadCrumbContact'), url: `${environment.baseUrl}${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -142,6 +150,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
                         { name: this.translate.instant('seoBreadCrumbCoinChanger'), url: `${environment.baseUrl}${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
@@ -155,16 +164,14 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
                         { name: this.translate.instant('seoBreadCrumbControlTerminal'), url: `${environment.baseUrl}${this.router.url}` }
                     ];
+                    this.setSEO(pageType);
                 });
 
                 break;
         }
     }
 
-    prepareSEO(pageType: PageTYPE, name?: string) {
-
-        this.prepareTranslatedData(pageType, name);
-
+    private setSEO(pageType: PageTYPE) {
         // Basic SEO url : BASE_URL + Route
         this.seoUrl = environment.baseUrl + this.router.url;
 

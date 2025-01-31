@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path: '',
+        loadComponent: () => import('../app/pages/home/home.component').then(c => c.HomePage)
+    },
+    {
         path: 'sitemap',
         loadComponent: () => import('../app/pages/sitemap/sitemap.component').then(c => c.SitemapComponent)
     },
@@ -24,10 +28,6 @@ export const routes: Routes = [
     {
         path: 'product/:id',
         loadComponent: () => import('../app/pages/product/product.component').then(c => c.ProductPage)
-    },
-    {
-        path: '',
-        loadComponent: () => import('../app/pages/home/home.component').then(c => c.HomePage)
     },
     {
         path: '**',

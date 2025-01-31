@@ -11,7 +11,7 @@ export class CustomerService {
         { name: 'API', url: 'assets/customers/API.svg' },
         { name: 'SPAR', url: 'assets/customers/spar.svg' },
         { name: 'Gulli Parc', url: 'assets/customers/Gulli Parc.svg' },
-        { name: 'Randy Market', url: 'assets/customers/Randy Market.png' },
+        { name: 'Randy Market', url: 'assets/customers/Randy Market.avif' },
         { name: 'Maki Time', url: 'assets/customers/Maki Time.png' },
         { name: 'R.J.S.T', url: 'assets/customers/R.J.S.T.jpg' },
         { name: 'Le Théâtre du pain', url: 'assets/customers/Le Theatre du pain.png' },

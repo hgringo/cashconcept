@@ -26,10 +26,6 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              },
               "src/assets",
               "src/sitemap.xml",
               "src/robots.txt"
@@ -66,8 +62,11 @@
           "configurations": {
             "production": {
               "optimization": true,
+              "outputHashing": "all",
               "sourceMap": false,
-              "outputHashing": "all"
+              "namedChunks": false,
+              "extractLicenses": true,
+              "aot": true
             },
             "development": {
               "optimization": false,

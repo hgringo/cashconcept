@@ -21,7 +21,7 @@ export class FundingsComponent{
     { name: 'Europa Bank', src: 'assets/fundings/europabank-logo.svg' },
     { name: 'Grenke Lease', src: 'assets/fundings/grenke-logo.svg' },
     { name: 'BNP Paribas', src: 'assets/fundings/bnp-paribas-logo.svg' },
-    { name: 'Realease Capital', src: 'assets/fundings/realease-logo.png' },
-    { name: 'Axial Lease', src: 'assets/fundings/axialease-logo.jpeg' },
+    { name: 'Realease Capital', src: 'assets/fundings/realease-logo.webp' },
+    { name: 'Axial Lease', src: 'assets/fundings/axialease-logo.webp' },
   ];
 }

@@ -1,4 +1,4 @@
-import { CommonModule, DOCUMENT, ViewportScroller } from '@angular/common';
+import { CommonModule, DOCUMENT, NgOptimizedImage, ViewportScroller } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from 'app/services/product.service';
@@ -12,7 +12,8 @@ import { Carousel, CarouselModule } from 'primeng/carousel';
   imports: [
     CommonModule,
     CarouselModule,
-    TranslateModule
+    TranslateModule,
+    NgOptimizedImage
   ],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.scss'

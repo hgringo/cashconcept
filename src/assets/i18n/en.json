@@ -56,6 +56,7 @@
     "contactUs": "Contact us",
     "compare": "Compare",
     "empty": "Empty",
+    "emptyComparator": "Empty comparator",
     "seeMore": "Learn more",
     "included": "INCLUDED",
     "controlPageTitle": "Our payment",
@@ -169,5 +170,7 @@
     "seoCoinChangerTitle": "CashConcept - Automatic Payment Machine",
     "seoCoinChangerDesc": "Discover the CashBox automatic payment machines.",
     "seoControlTitle": "CashConcept - Command terminals",
-    "seoControlDesc": "Discover the CasBox control terminals."
+    "seoControlDesc": "Discover the CashBox control terminals.",
+    "discoverFacebook": "Discover our installations",
+    "send": "Send message"
   }

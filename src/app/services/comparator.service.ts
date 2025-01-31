@@ -8,21 +8,31 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ComparatorService {
 
-  private productsSubject: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>(this.loadProducts());
+  private productsSubject: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
   public products$: Observable<IProduct[]> = this.productsSubject.asObservable();
 
-  private isBrowser!: boolean;
+  private isBrowser: boolean;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      const products = this.loadProducts();
+      this.productsSubject.next(products);
+    }
+  }
 
   private loadProducts(): IProduct[] {
-    
+    if (!this.isBrowser) return []; // Avoid accessing localStorage in SSR
+
     const storedProducts = localStorage.getItem('products');
     return storedProducts ? JSON.parse(storedProducts) : [];
   }
 
   private saveProducts(products: IProduct[]) {
-    localStorage.setItem('products', JSON.stringify(products));
+    if (this.isBrowser) {
+      localStorage.setItem('products', JSON.stringify(products));
+    }
   }
 
   addProduct(product: IProduct): void {

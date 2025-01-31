@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { _, TranslateModule } from '@ngx-translate/core';
 import { CollapsibleComparatorComponent } from 'app/components/collapsible-comparator/collapsible-comparator.component';
 import { FooterComponent } from 'app/components/footer/footer.component';
 import { SavComponent } from 'app/components/sav/sav.component';
@@ -28,8 +28,9 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     SavComponent,
     CollapsibleComparatorComponent,
     TranslateModule,
-    FooterComponent
-  ]
+    FooterComponent,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoinChangerPage implements OnInit{
 

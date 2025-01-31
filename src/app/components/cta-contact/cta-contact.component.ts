@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   standalone: true,
-  selector: 'app-cta-contact',
+  selector: 'cta-contact',
   imports: [
     CommonModule
   ],

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivitiesComponent } from 'app/components/activities/activities.component';
 import { BannerComponent } from 'app/components/banner/banner.component';
 import { CategoriesComponent } from 'app/components/categories/categories.component';
@@ -23,7 +23,8 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     CustomersComponent
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage implements OnInit {
 

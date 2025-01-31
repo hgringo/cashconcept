@@ -5,6 +5,10 @@ import { IProduct } from './types/product';
 
 export const serverRoutes: ServerRoute[] = [
   {
+    path: '',
+    renderMode: RenderMode.Client,
+  },
+  {
       path: 'sitemap',
       renderMode: RenderMode.Prerender,
   },

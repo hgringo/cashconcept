@@ -14,7 +14,8 @@ import { Carousel, CarouselModule } from 'primeng/carousel';
     TranslateModule
   ],
   templateUrl: './related.component.html',
-  styleUrl: './related.component.scss'
+  styleUrl: './related.component.scss',
+  host: {'related-id': 'related-1'}
 })
 export class RelatedComponent implements OnInit {
 

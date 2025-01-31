@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ComparatorService } from 'app/services/comparator.service';
 import { IProduct } from 'app/types/product';
 import { ButtonModule } from 'primeng/button';
@@ -12,7 +12,8 @@ import { RelatedComponent } from 'app/components/related/related.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from 'app/components/footer/footer.component';
 import { Router } from '@angular/router';
-
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 
 @Component({
@@ -27,10 +28,12 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     SavComponent,
     RelatedComponent,
     TranslateModule,
-    FooterComponent
+    FooterComponent,
+    FontAwesomeModule
   ],
   templateUrl: './comparator.component.html',
-  styleUrl: './comparator.component.scss'
+  styleUrl: './comparator.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ComparatorPage implements OnInit {
 
@@ -45,6 +48,8 @@ export class ComparatorPage implements OnInit {
       active: true
     }
   ];
+
+  faTrash = faTrashCan;
 
   // Define the maximum number of products to compare
   maxProducts = 4;

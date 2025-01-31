@@ -1,20 +1,30 @@
 @defer (hydrate never) {
-<div
-    class="fb-page" 
-    data-href="https://www.facebook.com/Cashconceptsolution" 
-    data-tabs="timeline" 
-    data-width="500" 
-    data-height="450" 
-    data-small-header="false" 
-    data-adapt-container-width="true"
-    data-hide-cover="false" 
-    data-show-facepile="true"
->    
-    <blockquote 
-        cite="hhttps://www.facebook.com/Cashconceptsolution" 
-        class="fb-xfbml-parse-ignore">
-        
-        <a href="https://www.facebook.com/Cashconceptsolution">CashConcept Solution</a>
-    </blockquote>
-</div>
+<h5 class="mb-4">Nos installations</h5>
+
+<blockquote class="installation__container">
+
+    <div class="installation__gallery">
+
+        <p-carousel 
+        [value]="installation" 
+        [numVisible]="1" 
+        [numScroll]="1"
+        [showNavigators]="false"
+        [circular]="true" 
+        autoplayInterval="3000"
+        indicatorsContentClass="installation__indicators"
+        >
+        <ng-template let-installation #item>
+            <div class="installation__item">
+                <img class="installation__image" [src]="installation.src" alt="CashConcept Installation" />
+            </div>
+        </ng-template>
+        </p-carousel>
+
+        <button class="btn btn-primary facebook" (click)="goToFB()">
+            <i class="pi pi-facebook"></i>
+            {{ 'discoverFacebook' | translate }}
+        </button>
+    </div>
+</blockquote>
 }

@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
 import { ComparatorService } from 'app/services/comparator.service';
 import { IProduct } from 'app/types/product';
-import { environment } from 'environments/environment';
 import { ButtonModule } from 'primeng/button';
+import { faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-collapsible-comparator',
@@ -14,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     RouterModule,
     ButtonModule,
+    FontAwesomeModule,
     TranslateModule
   ],
   templateUrl: './collapsible-comparator.component.html',
@@ -24,6 +26,9 @@ export class CollapsibleComparatorComponent implements OnInit {
   @Input() products: IProduct[] = [];
   @Output() removeProduct = new EventEmitter<string>();
   isOpen: boolean = false;
+
+  faTrash = faTrashCan;
+  faXmark = faXmark;
 
   constructor(
     private comparatorService: ComparatorService,

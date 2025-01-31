@@ -9,15 +9,15 @@
             </h1>
             <ul class="activity__list">
               <li class="activity__item">
-                <img class="activity__icon" src="assets/activities/market.svg" loading="lazy" alt="Commerce de proximité" />
+                <img class="activity__icon" src="assets/activities/market.svg"  alt="Commerce de proximité" />
                 <span>{{ 'activityMarket' | translate }}</span>
               </li>
               <li class="activity__item">
-                <img class="activity__icon" src="assets/activities/horeca.svg" loading="lazy" alt="Horeca" />
+                <img class="activity__icon" src="assets/activities/horeca.svg"  alt="Horeca" />
                 <span>{{ 'activityHoreca' | translate }}</span>
               </li>
               <li class="activity__item">
-                <img class="activity__icon" src="assets/activities/esthetical.svg" loading="lazy" alt="Esthetical" />
+                <img class="activity__icon" src="assets/activities/esthetical.svg"  alt="Esthetical" />
                 <span>{{ 'activityEsthetical' | translate }}</span>
               </li>
             </ul>
@@ -28,11 +28,11 @@
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
             <div class="image-container blob__container">
               <div class="column column-single">
-                <img src="assets/activities/1.jpg" loading="lazy" alt="Barber shop" class="image img1">
+                <img [ngSrc]="imgBarber" width="516" height="284" alt="Barber shop" class="image img1">
               </div>
               <div class="column column-double">
-                <img src="assets/activities/2.jpg" loading="lazy" alt="Horeca" class="image img2">
-                <img src="assets/activities/3.jpg" loading="lazy" alt="Shopping" class="image img3">
+                <img [ngSrc]="imgHoreca" width="516" height="284"  alt="Horeca" class="image img2">
+                <img [ngSrc]="imgShopping" width="516" height="284"  alt="Shopping" class="image img3">
               </div>
             </div>
           </div>

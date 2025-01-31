@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from 'app/components/footer/footer.component';
@@ -9,6 +9,8 @@ import { IBreadcrumb } from 'app/types/breadcrumb';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
+import { faEnvelope, faPhone, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from 'environments/environment';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 
@@ -24,14 +26,20 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     TextareaModule,
     SubheaderComponent,
     TranslateModule,
-    FooterComponent
+    FooterComponent,
+    FontAwesomeModule
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactPage implements OnInit {
 
   environment = environment;
+
+  faEnvelope = faEnvelope;
+  faPhone = faPhone;
+  faPaperPlane = faPaperPlane;
 
   contactForm!: FormGroup;
   formStartTime!: number;

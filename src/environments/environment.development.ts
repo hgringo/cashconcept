@@ -5,6 +5,6 @@ export const environment = {
     phoneNumberPierre: '+32 472 90 95 31',
     mailOlivier: 'Olivier.carette@cashconcept.be',
     mailPierre: 'Pierre.marteau@cashconcept.be',
-    mailContact: 'contact@cashconcept.be',
+    mailContact: 'info@cashconcept.be',
     endpointContact: 'https://cashconcept.be/swagger/api/Contact/Send',
 };

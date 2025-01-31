@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { FooterComponent } from 'app/components/footer/footer.component';
@@ -13,6 +13,7 @@ import { IProduct, ProductType } from 'app/types/product';
 import { ButtonModule } from 'primeng/button';
 import { ShareButtons } from 'ngx-sharebuttons/buttons';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   standalone: true,
@@ -29,7 +30,7 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     FooterComponent,
     ShareButtons
   ],
-  providers: [TranslateService]
+  
 })
 export class ProductPage {
 
@@ -62,13 +63,8 @@ export class ProductPage {
 
   isShareMenuOpen: boolean = false;
 
-  get activeImage(): string {
-    return this.product.gallery[this.activeThumbnailIndex]?.src;
-  }
-
-  get activeVideo(): string {
-    return this.product.gallery[this.activeThumbnailIndex]?.src;
-  }
+  activeImage!: string;
+  activeVideo!: SafeResourceUrl;
 
   get displayedThumbnails(): any[] {
     return this.product.gallery.slice(
@@ -89,7 +85,8 @@ export class ProductPage {
     private productService: ProductService,
     private route: ActivatedRoute,
     private translateService: TranslateService,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private sanitizer: DomSanitizer
   ) {}
   
   ngOnInit() {
@@ -107,6 +104,8 @@ export class ProductPage {
           this.product = item;
           this.pageTitle = this.product.name;
           this.subHeaderClassName = this.product.name.replaceAll(' ', '_');
+
+          this.activeImage = this.product.gallery[this.activeThumbnailIndex]?.src;
 
           switch(this.product.type) {
 
@@ -140,9 +139,12 @@ export class ProductPage {
     
   }
 
-  setActiveThumbnail(index: number): void {
+  setActiveThumbnail(index: number) {
     this.activeThumbnailIndex = index;
     this.isVideoActive = this.product.gallery[index]?.isVideo || false;
+
+    if (!this.isVideoActive) this.activeImage = this.product.gallery[this.activeThumbnailIndex]?.src;
+    else this.activeVideo = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.product.gallery[this.activeThumbnailIndex]?.src}?autoplay=1&mute=0`);
   }
 
   downloadTechnicalFeatures() {

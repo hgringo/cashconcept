@@ -3,6 +3,7 @@ export interface IProduct {
     name: string;
     type: ProductType;
     image: string;
+    menu: string;
     banner: string;
     gallery: IGalleryItem[];
     technicalFeatures?: ITechnicalFeatures[];

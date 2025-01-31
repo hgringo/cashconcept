@@ -6,17 +6,20 @@
                 <a [href]="['/']" class="d-inline-block mb-4 footer__logo__link">
                     <img class="footer__logo" src="assets/logo.png" alt="CashConcept Logo" />
                 </a>
-                <a class="btn" href="tel:0032493994972">
-                    <i class="fa-solid fa-user me-3"></i>
+                <a class="btn" [href]="'tel:' + environment.phoneNumberOlivier">
+                    <fa-icon [icon]="faUser" class="me-3"></fa-icon>
                     <span class="contact__name">Olivier :</span>
-                    <span class="contact__phone">+32 493 99 49 72</span>
+                    <span class="contact__phone">{{ environment.phoneNumberOlivier }}</span>
                 </a>
-                <a class="btn" href="tel:0032472909531">
-                    <i class="fa-solid fa-user me-3"></i>
+                <a class="btn" [href]="'tel:' + environment.phoneNumberPierre">
+                    <fa-icon [icon]="faUser" class="me-3"></fa-icon>
                     <span class="contact__name">Pierre :</span>
-                    <span class="contact__phone">+32 472 90 95 31</span>
+                    <span class="contact__phone">{{ environment.phoneNumberPierre }}</span>
                 </a>
-                <a class="btn" href="mailto:info&#64;cashconcept.be"><i class="fa fa-envelope me-3"></i>info&#64;cashconcept.be</a>
+                <a class="btn" [href]="'mailto:' + environment.mailContact">
+                    <fa-icon [icon]="faEnvelope" class="me-3"></fa-icon>
+                    {{ environment.mailContact }}
+                </a>
                 <div class="footer__contact">
                     <a class="btn btn-primary py-2 px-4 mt-4" [href]="['/contact']">
                         {{ 'contactUs' | translate }}
@@ -32,6 +35,7 @@
                     {{'footerCoinTitle2' | translate}}
                 </h5>
                 <a *ngFor="let product of coinChangers" class="btn btn-link" [href]="['/product/' + product.id]">
+                    <fa-icon [icon]="faChevronRight" class="me-1"></fa-icon>
                     {{product.name}}
                 </a>
             </div>
@@ -42,6 +46,7 @@
                 </h5>
                 
                 <a *ngFor="let product of controlTerminals" class="btn btn-link" [href]="['/product/' + product.id]">
+                    <fa-icon [icon]="faChevronRight" class="me-1"></fa-icon>
                     {{product.name}}
                 </a>
             </div>

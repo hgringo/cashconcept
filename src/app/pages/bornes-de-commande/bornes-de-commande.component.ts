@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CollapsibleComparatorComponent } from 'app/components/collapsible-comparator/collapsible-comparator.component';
@@ -29,7 +29,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     CollapsibleComparatorComponent,
     TranslateModule,
     FooterComponent
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControlTerminalPage implements OnInit{
 

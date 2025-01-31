@@ -48,7 +48,7 @@
                           <!-- Submenu items -->
                           <a *ngFor="let product of coinChangers" [href]="['/product/' + product.id]" class="dropdown-item nav-link menu__item">
                             <div class="menu__content">
-                              <img class="img-fluid menu__image" [src]="product.image" [alt]="product.name" />
+                              <img class="img-fluid menu__image" [ngSrc]="product.menu" height="85" width="60" [alt]="product.name" />
                               <span class="product__name">{{ product.name }}</span>
                             </div>
                           </a>
@@ -79,9 +79,9 @@
                     <div class="collapse navbar-collapse" id="bornes">
                       <div class="dropdown-menu column-hover bg-light mt-2">
                           <!-- Submenu items -->
-                          <a *ngFor="let product of controlTerminals" [href]="['/product/' + product.id]" class="dropdown-item nav-link menu__item">
+                          <a *ngFor="let product of controlTerminals" [href]="['/product/' + product.id]"  class="dropdown-item nav-link menu__item">
                             <div class="menu__content">
-                              <img class="img-fluid menu__image" [src]="product.image" [alt]="product.name" />
+                              <img class="img-fluid menu__image" [ngSrc]="product.menu" height="85" width="60" [alt]="product.name" />
                               <span class="product__name">{{ product.name }}</span>
                             </div>
                           </a>

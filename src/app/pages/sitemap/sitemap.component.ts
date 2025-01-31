@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from 'app/components/footer/footer.component';
 import { SubheaderComponent } from 'app/components/subheader/subheader.component';
@@ -18,7 +18,8 @@ import { IProduct, ProductType } from 'app/types/product';
     TranslateModule
   ],
   templateUrl: './sitemap.component.html',
-  styleUrl: './sitemap.component.scss'
+  styleUrl: './sitemap.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SitemapComponent implements OnInit {
 
