@@ -64,7 +64,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbCoinChanger'), url: `${environment.baseUrl}/monnayeurs-automatiques` },
                         { name: name, url: `${environment.baseUrl}/monnayeurs-automatiques${this.router.url}` }
                     ];
-                    this.setSEO(pageType);
+                    this.setSEO(pageType, name);
                 });
 
                 break;
@@ -79,7 +79,7 @@ export class AutoSEOService{
                         { name: this.translate.instant('seoBreadCrumbCoinChanger'), url: `${environment.baseUrl}/bornes-de-commande` },
                         { name: name, url: `${environment.baseUrl}/bornes-de-commande${this.router.url}` }
                     ];
-                    this.setSEO(pageType);
+                    this.setSEO(pageType, name);
                 });
 
                 break;
@@ -171,7 +171,7 @@ export class AutoSEOService{
         }
     }
 
-    private setSEO(pageType: PageTYPE) {
+    private setSEO(pageType: PageTYPE, name?: string) {
         // Basic SEO url : BASE_URL + Route
         this.seoUrl = environment.baseUrl + this.router.url;
 

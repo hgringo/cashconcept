@@ -5,8 +5,6 @@ import { IProduct, ProductType } from 'app/types/product';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { SelectModule } from 'primeng/select';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { languages } from 'app/types/language';
 import { environment } from 'environments/environment';
 
@@ -15,11 +13,9 @@ import { environment } from 'environments/environment';
   selector: 'header',
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
     TranslateModule,
-    SelectModule,
     NgOptimizedImage
   ],
   templateUrl: './header.component.html',
@@ -32,8 +28,6 @@ export class HeaderComponent implements OnInit {
 
   environment = environment;
 
-  control!: FormControl;
-
   coinChangers!: IProduct[];
   controlTerminals!: IProduct[];
 
@@ -44,6 +38,9 @@ export class HeaderComponent implements OnInit {
   isScrolled: boolean = false;
 
   languages: string[] = languages;
+  selectedLanguage!: string; // Default language
+  defaultLang: string = 'fr'; // Set default lang for language selection
+  dropdownOpen = false;
 
   constructor(
     private productService: ProductService,
@@ -54,14 +51,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    // Set default lang for language selection
-    var defaultLang: string = 'fr';
-
     if (isPlatformBrowser(this.platform)) {
-      defaultLang = localStorage.getItem('language') || 'fr';
+      this.selectedLanguage = localStorage.getItem('language') || this.defaultLang;
     }
-
-    this.control = new FormControl(defaultLang);
 
     this.coinChangers = this.productService.getProducts(ProductType.COIN_CHANGER);
     this.controlTerminals = this.productService.getProducts(ProductType.CONTROL_TERMINAL);
@@ -88,8 +80,15 @@ export class HeaderComponent implements OnInit {
   toggleSBBornes() {
     this.isExpandedSBBornes = !this.isExpandedSBBornes;
   }
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
   
   switchLanguage(lang: string) {
+
+    this.selectedLanguage = lang;
+    this.dropdownOpen = false;
 
     this.translate.use(lang);
 

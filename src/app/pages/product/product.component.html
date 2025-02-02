@@ -10,7 +10,7 @@
         <!-- Vertical Thumbnail Carousel -->
         <div class="thumbnail-carousel vertical">
           
-          <button *ngIf="product.gallery && product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()">
+          <button *ngIf="product.gallery && product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()" aria-label="Go Up Gallery">
             <i class="arrow pi pi-arrow-up"></i>
           </button>
 
@@ -37,7 +37,7 @@
               </div>
             </div>
           </div>
-          <button *ngIf="product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowDownDisabled() }" class="carousel-nav next" (click)="nextThumbnail()">
+          <button *ngIf="product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowDownDisabled() }" class="carousel-nav next" (click)="nextThumbnail()" aria-label="Go Down Gallery">
             <i class="arrow pi pi-arrow-down"></i>
           </button>
         </div>
@@ -65,14 +65,13 @@
           </iframe>
       
           <!-- Share options -->
-          <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()">
-          </p-button> 
+          <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()" [ariaLabel]="ariaLabel"></p-button> 
           <div class="share__menu" [ngClass]="{ 'open': isShareMenuOpen }">
             <share-buttons
               class="share__buttons"
               [include]="['facebook','messenger','whatsapp','print','copy']"
               [show]="5"
-            ></share-buttons> 
+            ></share-buttons>
           </div>   
         </div>
       </div>    
@@ -181,9 +180,13 @@
               <img src="assets/tux.svg" alt="tux" class="tux" />
             </li>
   
-            <div class="horizontal__separator"></div>
+            <li>
+              <div class="horizontal__separator"></div>
+            </li>
   
-            <span class="mb-4 included__label">{{'included' | translate}}</span>
+            <li>
+              <span class="mb-4 included__label">{{'included' | translate}}</span>
+            </li>
   
             <li *ngIf="product.monitor">
               <i class="pi pi-check included"></i>
@@ -232,10 +235,10 @@
             </li>
           </ul>
   
-          <a *ngIf="product.technicalFeatures" (click)="downloadTechnicalFeatures()" class="btn__dowload btn btn-primary diagonal-close-button" >
+          <button *ngIf="product.technicalFeatures" (click)="downloadTechnicalFeatures()" class="btn__dowload btn btn-primary diagonal-close-button" >
             <i class="fa fa-download me-3"></i>
             {{'downloadTechnicalInfo' | translate}}
-          </a>   
+          </button>   
         </div>
       </div>
   

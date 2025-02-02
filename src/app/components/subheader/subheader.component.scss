@@ -4,7 +4,7 @@
 .hero-header {
     position: relative;
     height: 390px; width: 100%;
-    background-image: url('assets/Monnayeur automatiques CashBox cashconcept.be CashDro_mobile.png') !important;
+    background-image: url('assets/subheader/CashConcept - Monnayeurs automatiques_mobile.webp') !important;
     background-position: center 100% !important;
     background-repeat: no-repeat !important;
     background-size: contain !important;
@@ -13,47 +13,38 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0;
 
     &.contact {
-        background-image: url('assets/subheader/4.jpg') !important;
+        background-image: url('assets/subheader/CashConcept - Contact.webp') !important;
     }
 
     &.CashBox_7 {
-        background-image: url('assets/subheader/CashBox_7.png') !important;
+        background-image: url('assets/subheader/CashConcept - CashBox_7.webp') !important;
     }
 
     &.CashBox_5 {
-        background-image: url('assets/subheader/CashBox_5_1.png') !important;
+        background-image: url('assets/subheader/CashConcept - CashBox_5.webp') !important;
     }
 
     &.CashBox_3 {
-        background-image: url('assets/subheader/CashBox_3.png') !important;
+        background-image: url('assets/subheader/CashConcept - CashBox_3.webp') !important;
     }
    
     &.CashBox_S {
-        background-image: url('assets/subheader/CashBox_S.png') !important;
+        background-image: url('assets/subheader/CashConcept - CashBox_S.webp') !important;
         background-position: center 60% !important
     }
 
     @media (min-width: 768px) {
         height: 100vh;
-        background-image: url('assets/Monnayeur automatiques CashBox cashconcept.be CashDro.png') !important;
+        background-image: url('assets/subheader/CashConcept - Monnayeurs automatiques.webp') !important;
         background-size: cover !important;
     }
 
     @media (min-width: 960px) {
         margin-top: 10px;
     }
-
-    // &:after {
-    //     content: '';
-    //     position: absolute;
-    //     left: 0; top: 0;
-    //     display: block;
-    //     width: 100%; height: 100%;
-    //     background-color: rgba($color: #fff, $alpha: 0.2);
-    //     z-index: -1;
-    // }
 }
 
 .hero-header .container {

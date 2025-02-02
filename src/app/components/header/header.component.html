@@ -93,23 +93,17 @@
                   </a>
               
                   <!-- Language selector -->
-                  <p-select 
-                    [options]="languages"
-                    [formControl]="control"
-                    (onChange)="switchLanguage($event.value)"
-                  >
-                    <ng-template #selectedItem let-language>
-                      <div class="language-item">
-                        <img [src]="'assets/flags/'+ language +'.svg'" class="flag-icon" [alt]="language" />
-                      </div>
-                    </ng-template>
-                  
-                    <ng-template #item let-language>
-                      <div class="language-item">
-                        <img [src]="'assets/flags/'+ language +'.svg'" class="flag-icon" [alt]="language" />
-                      </div>
-                    </ng-template>
-                  </p-select>
+                  <div class="language-selector">
+                    <button class="language-button" (click)="toggleDropdown()">
+                      <img [src]="'assets/flags/' + selectedLanguage + '.svg'" class="flag-icon" [alt]="selectedLanguage" />
+                    </button>
+                    
+                    <ul class="language-dropdown" [ngClass]="{ 'display': dropdownOpen }">
+                      <li *ngFor="let language of languages" (click)="switchLanguage(language)">
+                        <img [src]="'assets/flags/' + language + '.svg'" class="flag-icon" [alt]="language" />
+                      </li>
+                    </ul>
+                  </div>
                 </div>
             </div>
           </div>

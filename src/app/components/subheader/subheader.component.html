@@ -1,15 +1,16 @@
-<div class="container-fluid bg-primary hero-header mb-5 {{className}}">
+<div class="container-fluid hero-header mb-5 {{className}}">
+    
     <div class="container text-center display">
+        
         <div class="square"></div>
+        
         <h1 class="display-4 mb-3 animated slideInDown">{{pageTitle | translate}}</h1>
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                <li 
-                    *ngFor="let breadcrumb of breadcrumbs;" 
-                    class="breadcrumb-item"
-                >
+                <li *ngFor="let breadcrumb of breadcrumbs;" class="breadcrumb-item">
                     @if (!breadcrumb.active) {
-                        <a class="breadcrumb__item" [routerLink]="breadcrumb.url">{{breadcrumb.label | translate}}</a>
+                        <a class="breadcrumb__item" [href]="breadcrumb.url">{{breadcrumb.label | translate}}</a>
                     }
                     @else {
                         {{breadcrumb.label | translate}}

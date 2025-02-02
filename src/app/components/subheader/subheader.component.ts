@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { IBreadcrumb } from 'app/types/breadcrumb';
 
@@ -9,7 +8,6 @@ import { IBreadcrumb } from 'app/types/breadcrumb';
   selector: 'app-subheader',
   imports: [
     CommonModule,
-    RouterLink,
     TranslateModule
   ],
   templateUrl: './subheader.component.html',
