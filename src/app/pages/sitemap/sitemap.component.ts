@@ -5,6 +5,7 @@ import { FooterComponent } from 'app/components/footer/footer.component';
 import { SubheaderComponent } from 'app/components/subheader/subheader.component';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 import { ProductService } from 'app/services/product.service';
+import { TranslationService } from 'app/services/translation.service';
 import { IBreadcrumb } from 'app/types/breadcrumb';
 import { IProduct, ProductType } from 'app/types/product';
 
@@ -40,10 +41,13 @@ export class SitemapComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.autoSEOService.prepareSEO(PageTYPE.SitemapPage);
 

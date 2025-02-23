@@ -9,6 +9,7 @@ import { SubheaderComponent } from 'app/components/subheader/subheader.component
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 import { ComparatorService } from 'app/services/comparator.service';
 import { ProductService } from 'app/services/product.service';
+import { TranslationService } from 'app/services/translation.service';
 import { IBreadcrumb } from 'app/types/breadcrumb';
 import { IProduct, ProductType } from 'app/types/product';
 import { ButtonModule } from 'primeng/button';
@@ -52,10 +53,13 @@ export class ControlTerminalPage implements OnInit{
   constructor(
     private comparatorService: ComparatorService,
     private productService: ProductService,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.autoSEOService.prepareSEO(PageTYPE.ControlTerminalPage);
 

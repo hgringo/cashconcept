@@ -13,6 +13,7 @@
   background-size: cover !important;
   z-index: 1;
   padding-top: 0;
+  overflow: hidden;
 
   @media (min-width: 431px) {
     display: flex;
@@ -122,6 +123,7 @@
 .slider__img {
 
   height: 280px;
+  width: auto;
   aspect-ratio: auto 350 / 280;
 
   @media (min-width: 768px) {

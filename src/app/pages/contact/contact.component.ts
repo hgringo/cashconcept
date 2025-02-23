@@ -13,6 +13,7 @@ import { faEnvelope, faPhone, faPaperPlane } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from 'environments/environment';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
+import { TranslationService } from 'app/services/translation.service';
 
 @Component({
   standalone: true,
@@ -61,10 +62,13 @@ export class ContactPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.autoSEOService.prepareSEO(PageTYPE.ContactPage);
 

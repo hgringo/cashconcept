@@ -75,6 +75,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Mini/technical_features/fr/Fiche technique CashBox Mini.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox Mini/technical_features/en/Technical sheet  CashBox Mini.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox Mini/technical_features/nl/Technische gegevensbladen CashBox Mini.pdf"},
           ],
           isCompared: false,
           acceptVerify: true,
@@ -121,6 +122,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox 3/technical_features/fr/Fiche technique CashBox 3.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox 3/technical_features/en/Technical sheet   CashBox 3.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox 3/technical_features/nl/Technische gegevensbladen CashBox 3.pdf"},
           ],
           isCompared: false,
           acceptVerify: true,
@@ -172,6 +174,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox 5/technical_features/fr/Fiche technique CashBox 5.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox 5/technical_features/en/Technical sheet   CashBox 5.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox 5/technical_features/nl/Technische gegevensbladen CashBox 5.pdf"},
           ],
           isCompared: false,
           acceptVerify: true,
@@ -219,6 +222,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Pro/technical_features/fr/Fiche technique CashBox Pro.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox Pro/technical_features/en/Technical sheet   CashBox Pro.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox Pro/technical_features/nl/Technische gegevensbladen CashBox Pro.pdf"},
           ],
           acceptVerify: true,
           redistributeAll: false,
@@ -319,6 +323,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox 7+/technical_features/fr/Fiche technique CashBox 7+.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox 7+/technical_features/en/Technical sheet   CashBox 7+.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox 7+/technical_features/nl/Technische gegevensbladen CashBox 7+.pdf"},
           ],
           isCompared: false,
           acceptVerify: true,
@@ -371,6 +376,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox 8/technical_features/fr/Fiche technique CashBox 8.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox 8/technical_features/en/Technical sheet   CashBox 8.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox 8/technical_features/nl/Technische gegevensbladen CashBox 8.pdf"},
           ],
           isCompared: false,
           acceptVerify: true,
@@ -426,6 +432,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Order 2-4/technical_features/fr/Fiche technique CashBox Order 2.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox Order 2-4/technical_features/en/Technical sheet CashBox Order 2.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox Order 2-4/technical_features/nl/Technische gegevensbladen CashBox Order 2.pdf"},
           ],    
           isCompared: false,
           acceptVerify: true,
@@ -474,6 +481,7 @@ export class ProductService {
           technicalFeatures: [
             {'languageCode': 'fr', 'path': "assets/products/CashBox Order 2-4/technical_features/fr/Fiche technique CashBox Order 4.pdf"},
             {'languageCode': 'en', 'path': "assets/products/CashBox Order 2-4/technical_features/en/Technical sheet CashBox Order 4.pdf"},
+            {'languageCode': 'nl', 'path': "assets/products/CashBox Order 2-4/technical_features/nl/Technische gegevensbladen CashBox Order 4.pdf"},
           ],           
           isCompared: false,
           acceptVerify: true,

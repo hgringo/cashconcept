@@ -13,6 +13,7 @@ import { IProduct, ProductType } from 'app/types/product';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
+import { TranslationService } from 'app/services/translation.service';
 
 @Component({
   standalone: true,
@@ -52,10 +53,13 @@ export class CoinChangerPage implements OnInit{
   constructor(
     private comparatorService: ComparatorService,
     private productService: ProductService,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.autoSEOService.prepareSEO(PageTYPE.CoinChangerPage);
 

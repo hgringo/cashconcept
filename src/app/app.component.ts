@@ -53,16 +53,18 @@ export class AppComponent {
 
     if (isPlatformBrowser(this.platform)) { 
 
-      const storedLang = localStorage.getItem('language');
       this.translate.setDefaultLang('fr');
+      const storedLang = localStorage.getItem('language');
   
       if (storedLang) {
+        this.translate.setDefaultLang(storedLang);
         this.translate.use(storedLang);
       } 
       else {  
         const browserLang = this.translate.getBrowserLang();
         const defaultLang = browserLang?.match(/en|fr|nl/) ? browserLang : 'fr';
 
+        this.translate.setDefaultLang(defaultLang);
         this.translate.use(defaultLang);
         localStorage.setItem('language', defaultLang);
       }

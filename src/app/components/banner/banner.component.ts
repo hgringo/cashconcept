@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT, NgOptimizedImage, ViewportScroller } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from 'app/services/product.service';
 import { IPosition } from 'app/types/position';

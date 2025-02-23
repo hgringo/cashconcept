@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { FooterComponent } from 'app/components/footer/footer.component';
@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { ShareButtons } from 'ngx-sharebuttons/buttons';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TranslationService } from 'app/services/translation.service';
 
 @Component({
   standalone: true,
@@ -81,10 +82,13 @@ export class ProductPage {
     private route: ActivatedRoute,
     private translateService: TranslateService,
     private autoSEOService: AutoSEOService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private translationService: TranslationService
   ) {}
   
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.route.params.subscribe((params) => {
 

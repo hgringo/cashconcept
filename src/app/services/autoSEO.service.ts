@@ -192,8 +192,8 @@ export class AutoSEOService{
 
         // Schema.org markup WebPage
         const webpageSchema = {
-            '@context': 'https://schema.org',
-            '@type': 'WebPage',
+            "@context": "https://schema.org",
+            "@type": "WebPage",
             name: this.seoTitle,
             url: this.seoUrl,
             description: this.seoDesc
@@ -201,8 +201,8 @@ export class AutoSEOService{
 
         // Schema.org markup Organization
         const organizationSchema = {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
+            "@context": "https://schema.org",
+            "@type": "Organization",
             name: this.seoName,
             url: environment.baseUrl,
             logo: `${environment.baseUrl}/assets/logo.png`,
@@ -210,7 +210,7 @@ export class AutoSEOService{
 
         // Schema.org markup WebSite
         const websiteSchema = {
-            "@context": "https://schema.org/",
+            "@context": "https://schema.org",
             "@type": "WebSite",
             "name": this.seoName,
             "url": environment.baseUrl,

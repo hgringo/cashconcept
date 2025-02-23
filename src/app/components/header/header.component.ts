@@ -90,10 +90,9 @@ export class HeaderComponent implements OnInit {
     this.selectedLanguage = lang;
     this.dropdownOpen = false;
 
-    this.translate.use(lang);
-
     if (isPlatformBrowser(this.platform)) { 
       localStorage.setItem('language', lang);
+      this.translate.use(lang);
     }
   }
 }

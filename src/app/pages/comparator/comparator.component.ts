@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
+import { TranslationService } from 'app/services/translation.service';
 
 @Component({
   standalone: true,
@@ -117,10 +118,13 @@ export class ComparatorPage implements OnInit {
   constructor(
     private comparatorService: ComparatorService,
     private router: Router,
-    private autoSEOService: AutoSEOService
+    private autoSEOService: AutoSEOService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit() {
+
+    this.translationService.initLanguage();
 
     this.autoSEOService.prepareSEO(PageTYPE.ComparatorPage);
 
