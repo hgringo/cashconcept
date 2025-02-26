@@ -1,0 +1,388 @@
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" className="simulation"></app-subheader>
+
+<div class="container">
+    <h1 class="text-primary mb-5">{{ 'financingTitle'  | translate }} <span class="fw-light text-dark">{{ 'financingTitle2'  | translate }}</span></h1>
+    
+    <p class="mb-3">{{ 'financingDesc' | translate }}</p>
+    <p class="mb-3">{{ 'financingDesc2' | translate }}</p>
+    <p class="mb-3">{{ 'financingDesc3' | translate }}</p>
+    <p class="mb-5">{{ 'financingDesc4' | translate }}</p>
+
+
+    <div class="form__confirmation" *ngIf="isFormSended">
+        <i class="pi pi-check-circle form__confirmation__icon"></i>
+        <p class="form__confirmation__message">{{ 'sendedRequest' | translate }}</p>
+    </div>
+
+    <form [formGroup]="financingForm" *ngIf="!isFormSended">
+    
+        <p-stepper [value]="1" class="basis-[50rem]" [linear]="true">
+            <p-step-list id="stepper">
+                <p-step [value]="1">{{ 'chooseYourProduct' | translate }}</p-step>
+                <p-step [value]="2">{{ 'yourProfile' | translate }}</p-step>
+                <p-step [value]="3">{{ 'yourData' | translate }}</p-step>
+                <p-step [value]="4">{{ 'yourPrice' | translate }}</p-step>
+            </p-step-list>
+            <p-step-panels>
+                <p-step-panel [value]="1">
+                    <ng-template #content let-activateCallback="activateCallback">
+                        <div class="flex flex-col h-48">
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                <div class="products">
+                                    <div 
+                                        *ngFor="let product of products" 
+                                        class="product" 
+                                        [class.checked]="isProductSelected(product)"
+                                        (click)="toggleCheck(product)"
+                                    >
+                                        <img class="product__image" [src]="product.image" [alt]="product.name" />
+                                        <span class="product__name">{{product.name}}</span>
+                                        <input class="product__checkbox" type="checkbox" [checked]="isProductSelected(product)" (click)="$event.stopPropagation()" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions flex pt-6 justify-end">
+                                <button class="btn btn-primary py-3" (click)="activateCallback(2)" (click)="scrollToStepper()">
+                                    {{ 'next' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-step-panel>
+        
+                <p-step-panel [value]="2">
+                    <ng-template #content let-activateCallback="activateCallback">
+                        <div class="flex flex-col h-48">
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                <div class="profiles">
+                                    <div 
+                                        *ngFor="let profile of profiles" 
+                                        class="profile" 
+                                        [ngClass]="profile.id"
+                                        [class.selected]="selectedProfile === profile"
+                                        (click)="selectProfile(profile)"
+                                    >
+                                        <fa-icon [icon]="profile.icon" class="fa-3x text-dark mb-4 profile__icon"></fa-icon>
+                                        <span class="profile__name">{{ profile.name | translate }}</span>
+                                        <input 
+                                            type="radio" 
+                                            class="profile__radio form-control" 
+                                            formControlName="profile" 
+                                            name="profile" 
+                                            [checked]="selectedProfile === profile" 
+                                            [value]="profile.id"
+                                            [id]="profile.id"
+                                            (click)="$event.stopPropagation()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions flex pt-6 justify-between">
+                            <button class="btn btn-primary py-3" (click)="activateCallback(1)" (click)="scrollToStepper()">
+                                {{ 'back' | translate }}
+                            </button>
+                            <button class="btn btn-primary py-3" (click)="activateCallback(3)" (click)="scrollToStepper()">
+                                {{ 'next' | translate }}
+                            </button>
+                        </div>
+                    </ng-template>
+                </p-step-panel>
+        
+                <p-step-panel [value]="3">
+                    <ng-template #content let-activateCallback="activateCallback">
+
+                        <div class="flex flex-col h-48">
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                <div class="row g-3">
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="firstName">
+                                            <label for="firstName">{{'financingFirstname'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="lastName">
+                                            <label for="lastName">{{'financingLastname'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" formControlName="email" class="form-control" id="email" placeholder="email">
+                                            <label for="email">{{'financingEmail'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber" placeholder="phoneNumber">
+                                            <label for="phoneNumber">{{'financingPhoneNumber'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="tva" class="form-control" id="tva" placeholder="tva">
+                                            <label for="tva">{{'financingTVA'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="iban" class="form-control" id="iban" placeholder="iban">
+                                            <label for="iban">{{'financingIban'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" *ngIf="isSociety()">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="society" class="form-control" id="society" placeholder="society">
+                                            <label for="society">{{'financingSociety'| translate}}<span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p-fieldset [toggleable]="true" legend="{{ 'financingAddress' | translate }}">
+                                            <div class="col-md-6 address__field">
+                                                <div class="form-floating">
+                                                    <input type="text" formControlName="street" class="form-control" id="street" placeholder="street">
+                                                    <label for="street">{{'financingStreet'| translate}}<span class="required">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 address__field">
+                                                <div class="form-floating">
+                                                    <input type="text" formControlName="number" class="form-control" id="number" placeholder="number">
+                                                    <label for="number">{{'financingNumber'| translate}}<span class="required">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 address__field">
+                                                <div class="form-floating">
+                                                    <input type="text" formControlName="postalCode" class="form-control" id="postalCode" placeholder="postalCode">
+                                                    <label for="postalCode">{{'financingPostalCode'| translate}}<span class="required">*</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 address__field">
+                                                <div class="form-floating">
+                                                    <input type="text" formControlName="municipality" class="form-control" id="municipality" placeholder="municipality">
+                                                    <label for="municipality">{{'financingMunicipality'| translate}}<span class="required">*</span></label>
+                                                </div>
+                                            </div>
+                                        </p-fieldset>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p-toast />
+                                        <p-fileupload 
+                                            url="https://www.primefaces.org/cdn/api/upload.php" 
+                                            [multiple]="true" 
+                                            [accept]="acceptedFiles"
+                                            maxFileSize="4000000"
+                                            (onSelect)="onSelectedFiles($event)"
+                                            (onRemove)="onRemove($event)"
+                                        >
+                                            <ng-template #header let-files let-chooseCallback="chooseCallback" let-clearCallback="clearCallback" let-uploadCallback="uploadCallback">
+                                                <div class="file__header">
+                                                    <span class="file__header__title">
+                                                        @if (isPhysicalPerson()) {
+                                                            {{ 'financingIDCard' | translate }}<span class="required">*</span>
+                                                        }
+                                                        @else {
+                                                            {{ 'financingIDCardActionnaire' | translate }}<span class="required">*</span>
+                                                        }
+                                                    </span>
+                                                    <div class="file__header__actions">
+                                                        <p-button (onClick)="choose($event, chooseCallback)" icon="pi pi-images" [rounded]="true" [outlined]="true" />
+                                                        <p-button (onClick)="clearCallback()" icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger" [disabled]="!files || files.length === 0" />
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #content let-files let-uploadedFiles="uploadedFiles" let-removeFileCallback="removeFileCallback" let-removeUploadedFileCallback="removeUploadedFileCallback">
+                                                <div *ngIf="files?.length > 0">
+                                                    <div class="file__list">
+                                                        <div *ngFor="let file of files; let i = index" class="file">
+                                                            @if (file.type != 'application/pdf') {
+                                                                <img class="file__img" role="presentation" [alt]="file.name" [src]="file.objectURL" width="100" height="50" />
+                                                            }
+                                                            @else {
+                                                                <fa-icon class="file__pdf" [icon]="faFilePDF"></fa-icon>
+                                                            }
+                                                            <span class="file__name">{{ file.name }}</span>
+                                                            <small class="file__size">{{ formatSize(file.size) }}</small>
+                                                            <p-button class="file__remove" icon="pi pi-times" (click)="onRemoveTemplatingFile($event, file, removeFileCallback, i)" [outlined]="true" [rounded]="true" severity="danger" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #file></ng-template>
+                                            <ng-template #empty>
+                                                <div class="flex items-center justify-center flex-col">
+                                                    <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color"></i>
+                                                    <p class="mt-6 mb-0">{{ 'financingDrag&Drop' | translate }}</p>
+                                                </div>
+                                            </ng-template>
+                                        </p-fileupload>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isPhysicalPerson()">
+                                        <p-toast />
+                                        <p-fileupload 
+                                            url="https://www.primefaces.org/cdn/api/upload.php" 
+                                            [multiple]="true" 
+                                            [accept]="acceptedFiles"
+                                            maxFileSize="4000000"
+                                            (onSelect)="onSelectedFiles($event)"
+                                            (onRemove)="onRemove($event)"
+                                        >
+                                            <ng-template #header let-files let-chooseCallback="chooseCallback" let-clearCallback="clearCallback" let-uploadCallback="uploadCallback">
+                                                <div class="file__header">
+                                                    <span class="file__header__title">
+                                                        {{ 'financingExtraitRole' | translate }}<span class="required">*</span>
+                                                    </span>
+                                                    <div class="file__header__actions">
+                                                        <p-button (onClick)="choose($event, chooseCallback)" icon="pi pi-images" [rounded]="true" [outlined]="true" />
+                                                        <p-button (onClick)="clearCallback()" icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger" [disabled]="!files || files.length === 0" />
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #content let-files let-uploadedFiles="uploadedFiles" let-removeFileCallback="removeFileCallback" let-removeUploadedFileCallback="removeUploadedFileCallback">
+                                                <div *ngIf="files?.length > 0">
+                                                    <div class="file__list">
+                                                        <div *ngFor="let file of files; let i = index" class="file">
+                                                            @if (file.type != 'application/pdf') {
+                                                                <img class="file__img" role="presentation" [alt]="file.name" [src]="file.objectURL" width="100" height="50" />
+                                                            }
+                                                            @else {
+                                                                <fa-icon class="file__pdf" [icon]="faFilePDF"></fa-icon>
+                                                            }                                                            <span class="file__name">{{ file.name }}</span>
+                                                            <small class="file__size">{{ formatSize(file.size) }}</small>
+                                                            <p-button class="file__remove" icon="pi pi-times" (click)="onRemoveTemplatingFile($event, file, removeFileCallback, i)" [outlined]="true" [rounded]="true" severity="danger" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #file></ng-template>
+                                            <ng-template #empty>
+                                                <div class="flex items-center justify-center flex-col">
+                                                    <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color"></i>
+                                                    <p class="mt-6 mb-0">{{ 'financingDrag&Drop' | translate }}</p>
+                                                </div>
+                                            </ng-template>
+                                        </p-fileupload>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isSociety()">
+                                        <p-toast />
+                                        <p-fileupload 
+                                            url="https://www.primefaces.org/cdn/api/upload.php" 
+                                            [multiple]="true" 
+                                            [accept]="acceptedFiles"
+                                            maxFileSize="4000000"
+                                            (onSelect)="onSelectedFiles($event)"
+                                            (onRemove)="onRemove($event)"
+                                        >
+                                            <ng-template #header let-files let-chooseCallback="chooseCallback" let-clearCallback="clearCallback" let-uploadCallback="uploadCallback">
+                                                <div class="file__header">
+                                                    <span class="file__header__title">
+                                                        {{ 'financingBilan' | translate }} ({{lastYear}})<span class="required">*</span>
+                                                    </span>
+                                                    <div class="file__header__actions">
+                                                        <p-button (onClick)="choose($event, chooseCallback)" icon="pi pi-images" [rounded]="true" [outlined]="true" />
+                                                        <p-button (onClick)="clearCallback()" icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger" [disabled]="!files || files.length === 0" />
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #content let-files let-uploadedFiles="uploadedFiles" let-removeFileCallback="removeFileCallback" let-removeUploadedFileCallback="removeUploadedFileCallback">
+                                                <div *ngIf="files?.length > 0">
+                                                    <div class="file__list">
+                                                        <div *ngFor="let file of files; let i = index" class="file">
+                                                            @if (file.type != 'application/pdf') {
+                                                                <img class="file__img" role="presentation" [alt]="file.name" [src]="file.objectURL" width="100" height="50" />
+                                                            }
+                                                            @else {
+                                                                <fa-icon class="file__pdf" [icon]="faFilePDF"></fa-icon>
+                                                            }                                                            <span class="file__name">{{ file.name }}</span>
+                                                            <small class="file__size">{{ formatSize(file.size) }}</small>
+                                                            <p-button class="file__remove" icon="pi pi-times" (click)="onRemoveTemplatingFile($event, file, removeFileCallback, i)" [outlined]="true" [rounded]="true" severity="danger" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #file></ng-template>
+                                            <ng-template #empty>
+                                                <div class="flex items-center justify-center flex-col">
+                                                    <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color"></i>
+                                                    <p class="mt-6 mb-0">{{ 'financingDrag&Drop' | translate }}</p>
+                                                </div>
+                                            </ng-template>
+                                        </p-fileupload>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions flex pt-6 justify-between">
+                            <button class="btn btn-primary py-3" (click)="activateCallback(2)" (click)="scrollToStepper()">
+                                {{ 'back' | translate }}
+                            </button>
+                            <button class="btn btn-primary py-3" (click)="activateCallback(4)" (click)="scrollToStepper()">
+                                {{ 'next' | translate }}
+                            </button>
+                        </div>
+                    </ng-template>
+                </p-step-panel>
+
+                <p-step-panel [value]="4">
+                    <ng-template #content let-activateCallback="activateCallback">
+                        <div class="flex flex-col h-48">
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                <div class="cart">
+                                    <div class="cart__product" *ngFor="let item of selectedProducts; let i = index">
+                                        <div class="cart__product__info">
+                                            <img class="cart__product__image" [src]="item.product.image" [alt]="item.product.name" />
+                                            <span class="cart__product__name">{{item.product.name}}</span>
+                                        </div>
+                                        <div class="cart__right__column">
+                                            <div class="cart__product__occurence">
+                                                <p-inputnumber
+                                                    [formControl]="getProductControl(i)"
+                                                    [showButtons]="true" 
+                                                    buttonLayout="horizontal" 
+                                                    inputId="horizontal"
+                                                    spinnerMode="horizontal" 
+                                                    [step]="1" 
+                                                    mode="decimal"
+                                                    [min]="1"
+                                                    (onInput)="updateNbItems($event.value, item)"
+                                                >
+                                                    <ng-template #incrementbuttonicon>
+                                                        <span class="pi pi-plus"></span>
+                                                    </ng-template>
+                                                    <ng-template #decrementbuttonicon>
+                                                        <span class="pi pi-minus"></span>
+                                                    </ng-template>
+                                                </p-inputnumber>
+                                            </div>
+                                            <div class="cart__product__price">
+                                                <span>{{ 'financingPrice' | translate }} : <span class="price">{{ item.product.price }} €</span></span>
+                                                <span>{{ 'financingLeasingPrice' | translate }} : <span class="price">{{ item.product.leasingPrice }} €</span> {{ 'financingByMonth' | translate }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator" *ngIf="selectedProducts.length > 0"></div>
+                                <div class="cart__price" *ngIf="selectedProducts.length > 0">
+                                    <span class="cart__price__item">{{ 'totalPrice' | translate }} : <span class="price">{{ this.totalPrice }} €</span></span>
+                                    <span class="cart__price__item">{{ 'totalLeasingPrice' | translate }} : <span class="price">{{ this.totalLeasingPrice | number : '1.2-2' }} €</span> {{ 'financingByMonth' | translate }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions flex pt-6 justify-start">
+                            <button class="btn btn-primary py-3" (click)="activateCallback(3)" (click)="scrollToStepper()">
+                                {{ 'back' | translate }}
+                            </button>
+                            <button class="btn btn-primary py-3" type="submit" [disabled]="financingForm.invalid" (click)="onSubmit()">
+                                <fa-icon [icon]="faPaperPlane"></fa-icon>
+                                {{ 'financingSend' | translate }}
+                            </button>
+                        </div>
+                    </ng-template>
+                </p-step-panel>
+            </p-step-panels>
+        </p-stepper>
+
+    </form>
+</div>
+
+<app-footer></app-footer>

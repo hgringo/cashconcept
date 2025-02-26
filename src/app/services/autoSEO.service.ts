@@ -15,7 +15,8 @@ export enum PageTYPE {
     HomePage,
     SitemapPage,
     ComparatorPage,
-    ContactPage
+    ContactPage,
+    FinancingPage
 }
 
 @Injectable({
@@ -140,6 +141,20 @@ export class AutoSEOService{
                 });
 
                 break;
+
+            case PageTYPE.FinancingPage:
+
+                this.translate.get(_('seoFinancingTitle')).subscribe((res: string) => {
+                    this.seoTitle = res;
+                    this.seoDesc = this.translate.instant('seoFinancingDesc');
+                    this.seoBreadCrumb = [
+                        { name: this.translate.instant('seoBreadCrumbHome'), url: environment.baseUrl },
+                        { name: this.translate.instant('seoBreadCrumbFinancing'), url: `${environment.baseUrl}${this.router.url}` }
+                    ];
+                    this.setSEO(pageType);
+                });
+
+            break;
 
             case PageTYPE.CoinChangerPage:
 

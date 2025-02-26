@@ -4,6 +4,10 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+    --p-primary-color: rgb(108, 161, 96) !important;
+}
+
 $background-color: #fff;
 
 html, body { 
@@ -85,8 +89,8 @@ p-scrolltop {
 }
 
 .p-button {
-    border-color: $fern-green !important;
-    background: $fern-green !important;
+    border-color: $fern-green ;
+    background: $fern-green ;
 }
 
 
@@ -139,4 +143,21 @@ img.animated.pulse {
             }
         }
     }
+}
+
+/** Terms feed Cookie Consent **/
+.termsfeed-com---palette-dark.termsfeed-com---nb {
+    bottom: 3vh;
+    top: auto !important;
+}
+.termsfeed-com---palette-dark .cc-nb-okagree,
+.termsfeed-com---palette-dark .cc-nb-reject,
+.termsfeed-com---palette-dark .cc-cp-foot-save {
+    background-color: $fern-green !important;
+    color: #fff !important;
+}
+
+.termsfeed-com---palette-dark .cc-pc-head-close:active, 
+.termsfeed-com---palette-dark .cc-pc-head-close:focus {
+    border-color: $fern-green !important;
 }

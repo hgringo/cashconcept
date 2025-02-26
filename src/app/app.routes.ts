@@ -6,6 +6,10 @@ export const routes: Routes = [
         loadComponent: () => import('../app/pages/home/home.component').then(c => c.HomePage)
     },
     {
+        path: 'simulation-financement',
+        loadComponent: () => import('../app/pages/financing/financing.component').then(c => c.FinancingPage)
+    },
+    {
         path: 'sitemap',
         loadComponent: () => import('../app/pages/sitemap/sitemap.component').then(c => c.SitemapComponent)
     },

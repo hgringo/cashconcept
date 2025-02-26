@@ -8,7 +8,7 @@ import Aura from '@primeng/themes/aura';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { provideShareButtonsOptions, SharerMethods, withConfig } from 'ngx-sharebuttons';
 import { shareIcons } from 'ngx-sharebuttons/icons';
-import { provideClientHydration, withEventReplay, withI18nSupport, withIncrementalHydration } from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay, withI18nSupport } from '@angular/platform-browser';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'environments/environment';
 import { NgxSeoHelperModule } from 'ngx-seo-helper';
@@ -45,6 +45,6 @@ export const appConfig: ApplicationConfig = {
         sharerMethod: SharerMethods.Anchor,
       })
     ),
-    provideClientHydration(withEventReplay(), withI18nSupport()),
+    provideClientHydration(withEventReplay(), withI18nSupport())
   ]
 };

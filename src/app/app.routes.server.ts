@@ -17,6 +17,10 @@ export const serverRoutes: ServerRoute[] = [
       renderMode: RenderMode.Prerender,
   },
   {
+      path: 'simulation-financement',
+      renderMode: RenderMode.Prerender,
+  },
+  {
       path: 'comparator',
       renderMode: RenderMode.Prerender,
   },

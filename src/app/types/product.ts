@@ -8,6 +8,8 @@ export interface IProduct {
     gallery: IGalleryItem[];
     technicalFeatures?: ITechnicalFeatures[];
     isCompared: boolean;
+    price: number;
+    leasingPrice: number;
 
     // Accept/Verify
     acceptVerify: boolean;

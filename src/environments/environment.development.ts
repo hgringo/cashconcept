@@ -6,5 +6,6 @@ export const environment = {
     mailOlivier: 'Olivier.carette@cashconcept.be',
     mailPierre: 'Pierre.marteau@cashconcept.be',
     mailContact: 'info@cashconcept.be',
-    endpointContact: 'https://cashconcept.be/swagger/api/Contact/Send',
+    endpointContact: 'https://localhost:44318/swagger/api/Contact/Send',
+    endpointFinancing: 'https://localhost:44318/swagger/api/Financing/Send'
 };

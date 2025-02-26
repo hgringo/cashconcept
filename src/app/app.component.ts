@@ -1,5 +1,5 @@
 import { Component, inject, makeStateKey, REQUEST_CONTEXT, TransferState, VERSION, PLATFORM_ID } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { HeaderComponent } from './components/header/header.component';
 import { CtaContactComponent } from './components/cta-contact/cta-contact.component';
@@ -28,8 +28,7 @@ export class AppComponent {
   serverKey = makeStateKey<string>('server');
 
   constructor(
-    private translate: TranslateService,
-    private router: Router
+    private translate: TranslateService
   ) {
 
     const reqContext = inject(REQUEST_CONTEXT, { optional: true }) as {
