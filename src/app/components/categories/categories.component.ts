@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CategoriesComponent {
 
-  imgCoinChanger: string = 'assets/products/CashBox 3/CashBox 3_side_face.png';
-  imgTerminalControl: string = 'assets/products/CashBox Order 2-4/CashBox Order 2_side_face.png';
+  imgCoinChanger: string = 'assets/products/CashBox 5/side.png';
+  imgTerminalControl: string = 'assets/products/CashBox Order 2-4/CashBox Order 2_2.png';
 
 }

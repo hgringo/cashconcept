@@ -17,8 +17,21 @@ export class SubheaderComponent {
 
   @Input() breadcrumbs: IBreadcrumb[] = [];
   @Input() pageTitle: string = '';
-  @Input() className: string = '';
+  @Input() displayBreadcrumb: boolean = true;
+  @Input() image: string = '';
+  @Input() video: string = '';
+  @Input() videoPoster: string = '';
+  @Input() focusX: string = 'center';
+  @Input() focusY: string = '50%';
 
-  constructor() {}
+  videoStarted: boolean = false;
+
+  get objectPosition(): string {
+    return `${this.focusX} ${this.focusY}`;
+  }
+
+  get hasVideo(): boolean {
+    return !!this.video;
+  }
 
 }

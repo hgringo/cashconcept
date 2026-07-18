@@ -56,6 +56,10 @@ export class ContactPage implements OnInit {
       active: true
     }
   ];
+  subHeaderImage: string = 'assets/subheader/CashConcept-Contact.webp';
+
+  selectedLanguage!: string; // Default language
+  defaultLang: string = 'fr'; // Set default lang for language selection
 
   isFormSended: boolean = false;
 
@@ -69,6 +73,10 @@ export class ContactPage implements OnInit {
   ngOnInit() {
 
     this.translationService.initLanguage();
+
+    this.translationService.language$.subscribe(lang => {
+      this.selectedLanguage = lang;
+    });
 
     this.autoSEOService.prepareSEO(PageTYPE.ContactPage);
 

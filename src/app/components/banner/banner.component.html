@@ -1,5 +1,14 @@
-
 <div class="container-fluid bg-primary hero-header">
+
+  <!-- 🎥 VIDEO BACKGROUND -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline #bgVideo>
+      <source src="assets/banner_2.mp4" type="video/mp4">
+      <!-- Fallback -->
+      Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+  </div>
+
   <div class="container">
       <div class="row g-5 align-items-center">
           <div class="col-lg-6 text-center text-lg-start mb-5">
@@ -18,10 +27,9 @@
               {{ 'bannerFrom' | translate }}
               <span class="text-primary">{{ 'bannerPrice' | translate }}</span>
             </h1>
-            
           </div>
-          <div class="col-lg-6">
 
+          <div class="col-lg-6">
             <div class="blob__container">
               <p-carousel 
                 [value]="products" 
@@ -47,13 +55,12 @@
                 </ng-template>
               </p-carousel>
             </div>
-            
           </div>
       </div>
   </div>
 
-  <div id="sd-container" (click)="scrollToContent()">
+  <!-- <div id="sd-container" (click)="scrollToContent()">
     <div class="arrow"></div>
     <div class="arrow"></div>
-  </div>
+  </div> -->
 </div>

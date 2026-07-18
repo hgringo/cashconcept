@@ -31,7 +31,7 @@ import { TranslationService } from 'app/services/translation.service';
     FooterComponent,
     ShareButtons
   ],
-  
+
 })
 export class ProductPage {
 
@@ -44,33 +44,40 @@ export class ProductPage {
     {
       label : '',
       url: '/'
-    }, 
+    },
     {
       label : '',
       active: true
     }
   ];
 
-  subHeaderClassName: string = '';
-
   activeThumbnailIndex: number = 0;
   productId!: string;
   product!: IProduct;
 
+  // Galerie scindée : photos dans le carrousel, vidéos dans la section dédiée
+  photos: any[] = [];
+  videos: any[] = [];
+
   carouselStartIndex: number = 0;
   thumbnailsToShow: number = 5;
-
-  isVideoActive = false;
 
   isShareMenuOpen: boolean = false;
 
   activeImage!: string;
-  activeVideo!: SafeResourceUrl;
+
+  // Section vidéos, mise en avant
+  activeVideoIndex: number = 0;
+  activeSectionVideo!: SafeResourceUrl;
 
   ariaLabel: string = 'Share Product';
 
+  subHeaderImage: string = '';
+  subHeaderVideo : string = '';
+  subHeaderVideoPoster: string = '';
+
   get displayedThumbnails(): any[] {
-    return this.product.gallery.slice(
+    return this.photos.slice(
       this.carouselStartIndex,
       this.carouselStartIndex + this.thumbnailsToShow
     );
@@ -85,7 +92,7 @@ export class ProductPage {
     private sanitizer: DomSanitizer,
     private translationService: TranslationService
   ) {}
-  
+
   ngOnInit() {
 
     this.translationService.initLanguage();
@@ -93,7 +100,7 @@ export class ProductPage {
     this.route.params.subscribe((params) => {
 
       this.productId = params['id'];
-      
+
       if (this.productId) {
 
         var item = this.productService.getProductById(this.productId);
@@ -102,9 +109,22 @@ export class ProductPage {
 
           this.product = item;
           this.pageTitle = this.product.name;
-          this.subHeaderClassName = this.product.name.replaceAll(' ', '_');
 
-          this.activeImage = this.product.gallery[this.activeThumbnailIndex]?.src;
+          this.subHeaderImage = this.product.subheaderImage || '';
+          this.subHeaderVideo = this.product.subheaderVideo?.video || '';
+          this.subHeaderVideoPoster = this.product.subheaderVideo?.poster || '';
+
+          // Séparation photos / vidéos
+          this.photos = (this.product.gallery || []).filter(g => !g.isVideo);
+          this.videos = (this.product.gallery || []).filter(g => g.isVideo);
+
+          this.activeThumbnailIndex = 0;
+          this.carouselStartIndex = 0;
+          this.activeImage = this.photos[this.activeThumbnailIndex]?.src;
+
+          if (this.videos.length) {
+            this.setActiveSectionVideo(0, false);
+          }
 
           switch(this.product.type) {
 
@@ -135,15 +155,21 @@ export class ProductPage {
         }
       }
     });
-    
+
   }
 
   setActiveThumbnail(index: number) {
     this.activeThumbnailIndex = index;
-    this.isVideoActive = this.product.gallery[index]?.isVideo || false;
+    this.activeImage = this.photos[index]?.src;
+  }
 
-    if (!this.isVideoActive) this.activeImage = this.product.gallery[this.activeThumbnailIndex]?.src;
-    else this.activeVideo = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.product.gallery[this.activeThumbnailIndex]?.src}?autoplay=1&mute=0`);
+  setActiveSectionVideo(index: number, autoplay: boolean = true) {
+    this.activeVideoIndex = index;
+    const videoId = this.videos[index]?.src;
+    const params = autoplay ? '?autoplay=1&mute=0' : '';
+    this.activeSectionVideo = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${videoId}${params}`
+    );
   }
 
   downloadTechnicalFeatures() {
@@ -152,7 +178,7 @@ export class ProductPage {
   }
 
   nextThumbnail() {
-    if (this.carouselStartIndex + this.thumbnailsToShow < this.product.gallery.length) {
+    if (this.carouselStartIndex + this.thumbnailsToShow < this.photos.length) {
       this.carouselStartIndex++;
     }
   }
@@ -164,11 +190,11 @@ export class ProductPage {
   }
 
   arrowUpDisabled(): boolean {
-    return this.carouselStartIndex === 0;  
+    return this.carouselStartIndex === 0;
   }
 
   arrowDownDisabled(): boolean {
-    return this.carouselStartIndex + this.thumbnailsToShow >= this.product.gallery.length;
+    return this.carouselStartIndex + this.thumbnailsToShow >= this.photos.length;
   }
 
   toggleShareMenu() {
@@ -188,7 +214,7 @@ export class ProductPage {
           url: window.location.href,
         })
         .catch((error) => console.error('Error sharing:', error));
-    } 
+    }
     else {
       this.toggleShareMenu();
     }

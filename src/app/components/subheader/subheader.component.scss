@@ -1,122 +1,169 @@
 @import '../../../palette.scss';
 
-/*** Hero Header ***/
 .hero-header {
-    position: relative;
-    height: 390px; width: 100%;
-    background-image: url('assets/subheader/CashConcept - Monnayeurs automatiques_mobile.webp') !important;
-    background-position: center 100% !important;
-    background-repeat: no-repeat !important;
-    background-size: contain !important;
-    z-index: 1;
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  background-color: #5f8651;
+  margin-top: 120px;
+  overflow: hidden;
+
+  &--video {
+    min-height: 290px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: 500px;
+    margin-top: 160px;
+  }
+
+  @media screen and (min-width: 1200px) {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 0;
-
-    &.simulation {
-        background-image: url('assets/subheader/finance1.jpg') !important;
-    }
-
-    &.contact {
-        background-image: url('assets/subheader/CashConcept - Contact.webp') !important;
-    }
-
-    &.CashBox_7 {
-        background-image: url('assets/subheader/CashConcept - CashBox_7.webp') !important;
-    }
-
-    &.CashBox_5 {
-        background-image: url('assets/subheader/CashConcept - CashBox_5.webp') !important;
-    }
-
-    &.CashBox_3 {
-        background-image: url('assets/subheader/CashConcept - CashBox_3.webp') !important;
-    }
-   
-    &.CashBox_S {
-        background-image: url('assets/subheader/CashConcept - CashBox_S.webp') !important;
-        background-position: center 60% !important
-    }
-
-    @media (min-width: 768px) {
-        height: 100vh;
-        background-image: url('assets/subheader/CashConcept - Monnayeurs automatiques.webp') !important;
-        background-size: cover !important;
-    }
-
-    @media (min-width: 960px) {
-        margin-top: 10px;
-    }
+    justify-content: center;
+    margin-bottom: 0 !important;
+  }
 }
 
-.hero-header .container {
-    position: relative;
-    z-index: 1;
+// ─── Image ────────────────────────────────────────────────────────────────────
+
+.hero-image {
+  position: absolute;
+  z-index: 0;
 }
 
-.hero-header .breadcrumb-item+.breadcrumb-item::before {
-    color: $onyx;
+.hero-image--default {
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+
+  @media screen and (min-width: 1100px) {
+    width: 60%;
+  }
 }
 
-.breadcrumb__item {
-    color: $onyx;
+.hero-image--full {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
 }
 
-.display {
+// ─── Video ────────────────────────────────────────────────────────────────────
 
-    position: absolute !important;
-    bottom: -170px;
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
 
-    @media (min-width: 960px) {
-        position: relative !important;
-        margin-top: 110px;
-        bottom: 0;
-    }
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeInVideo 0.5s ease-in 0.05s forwards;
 
-    background-color: #fff;
-    color: $reseda-green;
-    padding: 20px;
-    
-    &:after {
-        content: '';
-        position: absolute;
-        bottom: 0; right: 0;
-        display: block;
-        width: 20px; height: 6px;
-        background: $reseda-green;
-    }
-  
-    &:before {
-        content: '';
-        position: absolute;
-        bottom: 0; right: 0;
-        display: block;
-        width: 6px; height: 20px;
-        background: $reseda-green;
-    }
+  @media screen and (max-width: 767px) {
+    object-position: center center;
+  }
+}
 
-    .square {
-        position: absolute;
-        top: 0; left: 0;
+@keyframes fadeInVideo {
+  to { opacity: 1; }
+}
 
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            display: block;
-            width: 20px; height: 6px;
-            background: $reseda-green;
-        }
-      
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0;
-            display: block;
-            width: 6px; height: 20px;
-            background: $reseda-green;
-        }
-    }
+.hero-video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+
+  i {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-left: 3px; // compense l'asymétrie visuelle du triangle
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// Overlay sombre pour lisibilité du contenu par-dessus la vidéo
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+
+  @media screen and (max-width: 767px) {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+}
+
+// ─── Content ──────────────────────────────────────────────────────────────────
+
+.hero-content {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 0;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1200px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    min-width: 420px;
+    max-width: 1320px;
+  }
+
+  h1 {
+    color: $fern-green;
+  }
+
+  &--over-video {
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  }
 }

@@ -1,22 +1,66 @@
-<div class="container-fluid hero-header mb-5 {{className}}">
-    
-    <div class="container text-center display">
-        
-        <div class="square"></div>
-        
-        <h1 class="display-4 mb-3 animated slideInDown">{{pageTitle | translate}}</h1>
+<div class="container-fluid hero-header mb-5" [class.hero-header--video]="hasVideo">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                <li *ngFor="let breadcrumb of breadcrumbs;" class="breadcrumb-item">
-                    @if (!breadcrumb.active) {
-                        <a class="breadcrumb__item" [href]="breadcrumb.url">{{breadcrumb.label | translate}}</a>
-                    }
-                    @else {
-                        {{breadcrumb.label | translate}}
-                    }
-                </li>
-            </ol>
-        </nav>
+  @if (hasVideo) {
+    <div class="hero-video-wrapper">
+      <video
+        class="hero-video"
+        (play)="videoStarted = true"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      >
+        <source src="assets/subheader/video/CashBox 5.mp4" type="video/mp4" />
+      </video>
     </div>
+    <div class="hero-overlay"></div>
+  }
+  @else if (image) {
+    <img
+      class="hero-image hero-image--full"
+      [src]="image"
+      alt="banner"
+      [style.object-position]="'center ' + focusY"
+    />
+  }
+  @else {
+    <img
+      class="hero-image hero-image--default"
+      src="assets/subheader/CashConcept-Monnayeurs.png"
+      alt="banner"
+      [style.object-position]="'center ' + focusY"
+    />
+  }
+
 </div>
+
+@if (displayBreadcrumb) {
+  <div class="container">
+    <div class="hero-content text-center" [class.hero-content--over-video]="hasVideo">
+
+      <div class="square"></div>
+
+      <h1 class="display-4 mb-3 animated slideInDown">
+        {{ pageTitle | translate }}
+      </h1>
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
+          @for (breadcrumb of breadcrumbs; track breadcrumb.url) {
+            <li class="breadcrumb-item">
+              @if (!breadcrumb.active) {
+                <a class="breadcrumb__item" [href]="breadcrumb.url">
+                  {{ breadcrumb.label | translate }}
+                </a>
+              } @else {
+                {{ breadcrumb.label | translate }}
+              }
+            </li>
+          }
+        </ol>
+      </nav>
+
+    </div>
+  </div>
+}

@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
 import { TranslationService } from 'app/services/translation.service';
+import { CustomizationComponent } from "app/components/customization/customization.component";
 
 @Component({
   standalone: true,
@@ -30,7 +31,8 @@ import { TranslationService } from 'app/services/translation.service';
     CollapsibleComparatorComponent,
     TranslateModule,
     FooterComponent,
-  ],
+    CustomizationComponent
+],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoinChangerPage implements OnInit{
@@ -49,6 +51,9 @@ export class CoinChangerPage implements OnInit{
       active: true
     }
   ];
+
+  subHeaderVideo: string = 'assets/subheader/video/CashBox 5.mp4';
+  subHeaderVideoPoster: string = 'assets/subheader/video/CashBox 5 Poster.webp';
 
   constructor(
     private comparatorService: ComparatorService,

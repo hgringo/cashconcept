@@ -1,0 +1,25 @@
+<div class="container-fluid py-5">
+    <div class="container">
+
+<div class="hero-block">
+
+  <div class="hero-left">
+    <h1 class="hero-title text-primary">
+      <span class="">Logiciels de caisse</span> 
+      <br/>
+      <span class="fw-light text-dark">compatible CashBox</span>
+    </h1>
+  </div>
+
+  <div class="hero-right">
+    @for (logo of logos; track logo.src) {
+      <div class="logo-card">
+        <img [src]="logo.src" [alt]="logo.alt" />
+      </div>
+    }
+  </div>
+
+</div>
+
+    </div>
+</div>

@@ -4,17 +4,17 @@
         <div class="row g-5 reverse">
             <div class="col-md-6 col-lg-3 wow fadeIn info" data-wow-delay="0.1s"> 
                 <a [href]="['/']" class="d-inline-block mb-4 footer__logo__link">
-                    <img class="footer__logo" src="assets/logo.png" alt="CashConcept Logo" />
-                </a>
-                <a class="btn" [href]="'tel:' + environment.phoneNumberOlivier">
-                    <fa-icon [icon]="faUser" class="me-3"></fa-icon>
-                    <span class="contact__name">Olivier :</span>
-                    <span class="contact__phone">{{ environment.phoneNumberOlivier }}</span>
+                    <img class="footer__logo" src="assets/logo_cashconcept.png" alt="CashConcept Logo" />
                 </a>
                 <a class="btn" [href]="'tel:' + environment.phoneNumberPierre">
                     <fa-icon [icon]="faUser" class="me-3"></fa-icon>
                     <span class="contact__name">Pierre :</span>
                     <span class="contact__phone">{{ environment.phoneNumberPierre }}</span>
+                </a>
+                <a class="btn" [href]="'tel:' + environment.phoneNumberOlivier">
+                    <fa-icon [icon]="faUser" class="me-3"></fa-icon>
+                    <span class="contact__name">Olivier :</span>
+                    <span class="contact__phone">{{ environment.phoneNumberOlivier }}</span>
                 </a>
                 <a class="btn" [href]="'mailto:' + environment.mailContact">
                     <fa-icon [icon]="faEnvelope" class="me-3"></fa-icon>
@@ -54,16 +54,39 @@
     </div>
     <div class="container wow fadeIn" data-wow-delay="0.1s">
         <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
                     &copy; {{currentYear}} - <a class="border-bottom link" [href]="['/']">CashConcept</a>, {{ 'allRightReserved' | translate }}.
-
-                    <div class="hidden">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-                    </div>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-md-4">
+                    <ul class="footer-socials">
+                         <li class="footer-socials-item">
+                            <a [href]="environment.socialNetworks.fb"  target="_blank">
+                                <img src="/assets/socials/facebook.svg" alt="fb"/>
+                            </a>
+                        </li>
+                        <li class="footer-socials-item">
+                            <a [href]="environment.socialNetworks.insta" target="_blank">
+                                <img src="/assets/socials/instagram.svg" alt="instagram"/>
+                            </a>
+                        </li>
+                         <li class="footer-socials-item">
+                            <a [href]="environment.socialNetworks.youtube"  target="_blank">
+                                <img src="/assets/socials/youtube.svg" alt="youtube"/>
+                            </a>
+                        </li>
+                         <li class="footer-socials-item">
+                            <a [href]="environment.socialNetworks.linkedin"  target="_blank">
+                                <img src="/assets/socials/linkedin.svg" alt="linkedin"/>
+                            </a>
+                        </li>
+                        <li class="footer-socials-item">
+                            <a href="https://calculator.cashconcept.be">
+                                <img src="/assets/logo.svg" alt="logo"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
                     <div class="footer-menu">
                         <a [href]="['/']">
                             {{ 'menuHome' | translate }}
@@ -71,13 +94,12 @@
                         <a [href]="['/sitemap']">
                             {{ 'menuSiteMap' | translate }}
                         </a>
-                        <a [href]="['assets/CONDITIONS GENERALES_CashConcept.pdf']" target="_blank">
+                        <a [href]="['assets/Conditions générales de vente MC PRO SOLUTIONS (SRL) 2025.pdf']" target="_blank">
                             {{ 'menuLegal' | translate }}
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <!-- Footer End -->

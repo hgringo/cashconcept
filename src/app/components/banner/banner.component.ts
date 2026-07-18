@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT, NgOptimizedImage, ViewportScroller } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { CommonModule, DOCUMENT, isPlatformBrowser, NgOptimizedImage, ViewportScroller } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from 'app/services/product.service';
 import { IPosition } from 'app/types/position';
@@ -23,6 +23,7 @@ export class BannerComponent implements OnInit, AfterViewInit {
   products!: IProduct[];
 
   @ViewChildren('headlineItem') listItems!: QueryList<ElementRef<HTMLLIElement>>;
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
   currentIndex: number = 0;
   #intervalId!: ReturnType<typeof setInterval>;
@@ -31,7 +32,8 @@ export class BannerComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private scroller: ViewportScroller,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
@@ -44,6 +46,18 @@ export class BannerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.startCyclingItems();
+
+    if (isPlatformBrowser(this.platformId)) {
+      // Code exécuté UNIQUEMENT dans le navigateur
+      const video = this.bgVideo.nativeElement;
+
+      video.muted = true;
+      video.playsInline = true;
+
+      video.play().catch(err => {
+        console.warn('Autoplay prevented:', err);
+      });
+    }
   }
 
   getTargetUrl(product: IProduct) : string {

@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { languages } from 'app/types/language';
 import { environment } from 'environments/environment';
+import { TranslationService } from 'app/services/translation.service';
 
 @Component({
   standalone: true,
@@ -45,7 +46,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private renderer: Renderer2,
-    private translate: TranslateService
+    private translationService: TranslationService
 
   ) {}
 
@@ -90,9 +91,7 @@ export class HeaderComponent implements OnInit {
     this.selectedLanguage = lang;
     this.dropdownOpen = false;
 
-    if (isPlatformBrowser(this.platform)) { 
-      localStorage.setItem('language', lang);
-      this.translate.use(lang);
-    }
+    // Use translation service to manage current lang
+    this.translationService.switchLanguage(lang);
   }
 }

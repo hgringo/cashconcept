@@ -1,0 +1,262 @@
+@import '../../../palette.scss';
+
+// ─── Section Wrapper ─────────────────────────────────────────────────────────
+.sav-section {
+  background: $white;
+  overflow: hidden;
+}
+
+// ─── Grid Layout ─────────────────────────────────────────────────────────────
+.sav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+// ─── Image Column ─────────────────────────────────────────────────────────────
+.sav-img-col {
+  @media (max-width: 991px) {
+    order: -1;
+  }
+}
+
+.sav-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  max-height: 580px;
+
+  @media (max-width: 991px) {
+    max-height: 420px;
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (max-width: 576px) {
+    max-height: 300px;
+  }
+}
+
+.sav-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+
+  @media (min-width: 960px) {
+    object-position: center top;
+  }
+
+  .sav-img-wrap:hover & {
+    transform: scale(1.03);
+  }
+}
+
+// Subtle green overlay at the bottom of the image
+.sav-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba($pakistan-green, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.sav-img-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  background: $fern-green;
+  color: $white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+// Decorative accent square behind the image
+.sav-img-accent {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 80px;
+  height: 80px;
+  border: 3px solid $reseda-green;
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0.5;
+
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
+// ─── Content Column ───────────────────────────────────────────────────────────
+.sav-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+// ─── Eyebrow ─────────────────────────────────────────────────────────────────
+.sav-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $fern-green;
+}
+
+.sav-eyebrow-line {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: $fern-green;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+// ─── Title ───────────────────────────────────────────────────────────────────
+.sav-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: $onyx;
+  line-height: 1.35;
+  margin: 0;
+
+  @media (max-width: 576px) {
+    font-size: 22px;
+  }
+}
+
+.sav-title-accent {
+  color: $fern-green;
+}
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+.sav-divider {
+  width: 44px;
+  height: 3px;
+  background: $reseda-green;
+  border-radius: 2px;
+}
+
+// ─── Body Text ───────────────────────────────────────────────────────────────
+.sav-text {
+  font-size: 15px;
+  color: $dim-gray;
+  line-height: 1.75;
+  margin: 0;
+}
+
+// ─── Highlight Block ─────────────────────────────────────────────────────────
+.sav-highlight {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: $light-green;
+  border-left: 3px solid $fern-green;
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+}
+
+.sav-highlight-icon {
+  color: $fern-green;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.sav-highlight-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: $onyx;
+  line-height: 1.65;
+  margin: 0;
+}
+
+// ─── Stats Grid ──────────────────────────────────────────────────────────────
+.sav-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sav-stat {
+  background: $light-green;
+  border: 1px solid rgba($fern-green, 0.15);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba($fern-green, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+.sav-stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: $fern-green;
+  line-height: 1.2;
+}
+
+.sav-stat-label {
+  font-size: 12px;
+  color: $dim-gray;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+// ─── CTA Button ──────────────────────────────────────────────────────────────
+.sav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: $fern-green;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  width: fit-content;
+  margin-top: 0.25rem;
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background: $pakistan-green;
+    color: $white;
+    text-decoration: none;
+    transform: translateY(-1px);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

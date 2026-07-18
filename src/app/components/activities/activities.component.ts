@@ -15,8 +15,8 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ActivitiesComponent {
 
-  imgBarber: string = 'assets/activities/1.webp';
-  imgHoreca: string = 'assets/activities/2.webp';
-  imgShopping: string = 'assets/activities/3.webp';
+  imgBarber: string = 'assets/activities/test1.webp';
+  imgHoreca: string = 'assets/activities/test2.webp';
+  imgShopping: string = 'assets/activities/test3.webp';
 
 }

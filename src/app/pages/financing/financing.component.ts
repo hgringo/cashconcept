@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT, ViewportScroller } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { _, TranslatePipe, TranslateService } from '@ngx-translate/core';
@@ -41,16 +41,13 @@ import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
     InputTextModule,
     InputNumberModule,
     FileUploadModule,
-    ToastModule,
-    BadgeModule,
-    ProgressBarModule,
     FieldsetModule,
     FontAwesomeModule,
     TranslatePipe
   ],
   templateUrl: './financing.component.html',
   styleUrl: './financing.component.scss',
-  providers: [MessageService]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FinancingPage implements OnInit {
 
@@ -70,6 +67,7 @@ export class FinancingPage implements OnInit {
       active: true
     }
   ];
+  subHeaderImage: string = 'assets/subheader/finance1.jpg';
 
   products!: IProduct[];
   selectedProducts: IfinancingProduct[] = [];
@@ -86,14 +84,14 @@ export class FinancingPage implements OnInit {
   files : File[] = [];
   totalSize : number = 0;
   totalSizePercent : number = 0;
-  acceptedFiles: string = ".pdf, .jpg, .png, .webp";
+  acceptedFiles: string = ".pdf, .jpg, .png, .webp, .heic";
 
   totalPrice: number = 0;
   totalLeasingPrice: number = 0;
 
   isFormSended: boolean = false;
 
-  lastYear!: number;
+  bilanYear!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -131,8 +129,18 @@ export class FinancingPage implements OnInit {
       iban: ['', [Validators.required]]
     });
 
-    var thisYear = (new Date()).getFullYear();
-    this.lastYear = thisYear - 1;
+    this.bilanYear = this.getBilanYear();
+  }
+
+  getBilanYear() : number {
+
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentYear = currentDate.getFullYear();
+
+    const targetYear = currentMonth < 9 ? currentYear - 1 : currentYear;
+
+    return targetYear;
   }
 
   get productControls() {
@@ -206,6 +214,7 @@ export class FinancingPage implements OnInit {
       data.append('Replacements', JSON.stringify(this.formatReplacementsData()));
       data.append('Products', JSON.stringify(this.formatProductsData()));
       data.append('Total', this.totalPrice.toString());
+      data.append('TotalLeasing', this.totalLeasingPrice.toString());
 
       // Append each selected file
       for (let file of this.files) {

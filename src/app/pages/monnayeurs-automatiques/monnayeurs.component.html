@@ -1,7 +1,7 @@
-<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle"></app-subheader>
+<app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" [video]="subHeaderVideo" [videoPoster]="subHeaderVideoPoster" [displayBreadcrumb]="false"></app-subheader>
 
-<div class="container-fluid content">
-  <div class="container">
+<div class="container-fluid">
+  <div class="container content">
       <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 800px;">
           <h1 class="text-primary mb-4"><span class="fw-light text-dark">{{ 'pageCoinTitle' | translate }}</span> {{ 'pageCoinTitle2' | translate }}</h1>
           <p class="mb-2">{{ 'pageCoinDesc' | translate }}</p>
@@ -30,6 +30,8 @@
       </div>
   </div>
 </div>
+
+<app-customization></app-customization>
 
 <app-sav></app-sav>
 

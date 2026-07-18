@@ -112,11 +112,7 @@ p-scrolltop {
 }
 
 .content {
-    padding-top: 170px;
-
-    @media (min-width: 960px) { 
-        padding-top: 0;
-    }
+    padding-top: 50px;
 }
 
 img.animated.pulse {
@@ -160,4 +156,40 @@ img.animated.pulse {
 .termsfeed-com---palette-dark .cc-pc-head-close:active, 
 .termsfeed-com---palette-dark .cc-pc-head-close:focus {
     border-color: $fern-green !important;
+}
+
+
+// -- FORCE COLOR TO FIX MOBILE DISPLAY --
+
+.p-inputnumber-input,
+p-fieldset,
+p-fieldset .p-fieldset,
+p-fieldset .p-fieldset-legend,
+p-fieldset .p-fieldset-legend .p-fieldset-legend-label,
+p-fileupload,
+.p-fileupload-advanced {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.p-step-number {
+    background-color: #fff !important;
+    color: #64748b !important;
+    border-color: #e2e8f0 !important;
+}
+
+.p-step-active .p-step-number {
+    color: $reseda-green !important;
+}
+
+.form-floating label {
+    color: #000 !important;
+}
+
+
+
+.w-full {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
 }

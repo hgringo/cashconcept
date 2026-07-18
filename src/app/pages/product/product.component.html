@@ -1,16 +1,16 @@
 @if (product) {
-  <app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" [className]="subHeaderClassName"></app-subheader>
+  <app-subheader [breadcrumbs]="breadcrumbs" [pageTitle]="pageTitle" [image]="subHeaderImage" [video]="subHeaderVideo" [videoPoster]="subHeaderVideoPoster"></app-subheader>
 
   <div class="container content">
-  
+
     <section class="product__display">
-  
+
       <div class="left__container">
-        
-        <!-- Vertical Thumbnail Carousel -->
+
+        <!-- Vertical Thumbnail Carousel (photos uniquement) -->
         <div class="thumbnail-carousel vertical">
-          
-          <button *ngIf="product.gallery && product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()" aria-label="Go Up Gallery">
+
+          <button *ngIf="photos.length > 5" [ngClass]="{ 'disabled' : arrowUpDisabled() }" class="carousel-nav prev" (click)="prevThumbnail()" aria-label="Go Up Gallery">
             <i class="arrow pi pi-arrow-up"></i>
           </button>
 
@@ -21,69 +21,46 @@
               [class.active]="i + carouselStartIndex === activeThumbnailIndex"
               (click)="setActiveThumbnail(i + carouselStartIndex)"
             >
-              <!-- Image Thumbnail -->
               <img
-                *ngIf="!item.isVideo"
                 [src]="item.thumbnail"
                 [alt]="'Thumbnail ' + (carouselStartIndex + i + 1)"
               />
-      
-              <!-- Video Thumbnail with Player Icon -->
-              <div class="video-thumbnail" *ngIf="item.isVideo">
-                <img [src]="item.thumbnail" [alt]="'Video Thumbnail ' + (carouselStartIndex + i + 1)" />
-                <span class="play-icon">
-                  <i class="pi pi-play"></i>
-                </span>
-              </div>
             </div>
           </div>
-          <button *ngIf="product.gallery.length > 5" [ngClass]="{ 'disabled' : arrowDownDisabled() }" class="carousel-nav next" (click)="nextThumbnail()" aria-label="Go Down Gallery">
+
+          <button *ngIf="photos.length > 5" [ngClass]="{ 'disabled' : arrowDownDisabled() }" class="carousel-nav next" (click)="nextThumbnail()" aria-label="Go Down Gallery">
             <i class="arrow pi pi-arrow-down"></i>
           </button>
         </div>
-      
-        <!-- Main Display (Image or Video) -->
 
+        <!-- Main Display (Image) -->
         <div class="product__img">
-          <!-- Display Image -->
           <img
-            *ngIf="!isVideoActive"
             [src]="activeImage"
             [alt]="'Product Image'"
             class="product__img__main"
           />
-      
-          <!-- Display Video -->
-          <iframe 
-            *ngIf="isVideoActive && activeVideo"
-            style="width: 100%;"
-            height="400"
-            [src]="activeVideo"
-            frameborder="0"
-            webkitallowfullscreen mozallowfullscreen allowfullscreen
-          >
-          </iframe>
-      
+
           <!-- Share options -->
-          <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()" [ariaLabel]="ariaLabel"></p-button> 
+          <p-button class="btn__share" [icon]="getShareIcon()" (click)="openShare()" [ariaLabel]="ariaLabel"></p-button>
           <div class="share__menu" [ngClass]="{ 'open': isShareMenuOpen }">
             <share-buttons
               class="share__buttons"
               [include]="['facebook','messenger','whatsapp','print','copy']"
               [show]="5"
             ></share-buttons>
-          </div>   
+          </div>
         </div>
-      </div>    
-      
+      </div>
+
       <div class="right__container">
-  
+
         <div class="product__info">
-  
+
           <h1 class="mb-5">{{product.name}}</h1>
-  
+
           <ul id="features-list">
-  
+
             <li *ngIf="product.acceptVerify">
               <i class="pi pi-minus"></i>
               {{ 'productFeatureAcceptVerify' | translate }}
@@ -179,76 +156,117 @@
               </span>
               <img src="assets/tux.svg" alt="tux" class="tux" />
             </li>
-  
+
             <li>
               <div class="horizontal__separator"></div>
             </li>
-  
+
             <li>
               <span class="mb-4 included__label">{{'included' | translate}}</span>
             </li>
-  
+
             <li *ngIf="product.monitor">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureMonitor' | translate: { inche: product.inche} }}
-              
+
             </li>
             <li *ngIf="product.laptop">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureDesktop' | translate: { inche: product.inche} }}
-              
+
             </li>
             <li *ngIf="product.screen">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureScreen' | translate: { screenInche: product.screenInche} }}
-              
+
             </li>
             <li *ngIf="product.screenTactical">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureScreenTactical' | translate: { screenTacticalInche: product.screenTacticalInche} }}
-              
+
             </li>
             <li *ngIf="product.program">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureCashRegisterProgram' | translate }}
-              
+
             </li>
             <li *ngIf="product.printer">
               <i class="pi pi-check included"></i>
               {{ 'productFeaturePrinter' | translate }}
-              
+
             </li>
             <li *ngIf="product.calculator">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureCalculator' | translate }}
-              
+
             </li>
             <li *ngIf="product.application">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureApp' | translate }}
-              
+
             </li>
             <li *ngIf="product.leds">
               <i class="pi pi-check included"></i>
               {{ 'productFeatureLeds' | translate }}
-              
+
             </li>
           </ul>
-  
+
           <button *ngIf="product.technicalFeatures" (click)="downloadTechnicalFeatures()" class="btn__dowload btn btn-primary diagonal-close-button" >
             <i class="fa fa-download me-3"></i>
             {{'downloadTechnicalInfo' | translate}}
-          </button>   
+          </button>
         </div>
       </div>
-  
+
     </section>
   </div>
-  
+
+  <!-- Section vidéos, mise en avant -->
+  @if (videos.length) {
+    <section class="product__videos">
+      <div class="container">
+        <div class="videos__header">
+          <span class="videos__eyebrow">{{ 'productVideosEyebrow' | translate }}</span>
+          <h2 class="videos__title">{{ 'productVideosTitle' | translate: { name: product.name } }}</h2>
+        </div>
+
+        <div class="videos__layout">
+          <!-- Vidéo principale -->
+          <div class="videos__feature">
+            <iframe
+              [src]="activeSectionVideo"
+              title="Vidéo produit"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- Sélecteur (uniquement si plusieurs vidéos) -->
+          @if (videos.length > 1) {
+            <div class="videos__rail">
+              @for (video of videos; track video.thumbnail; let i = $index) {
+                <button
+                  type="button"
+                  class="videos__item"
+                  [class.active]="i === activeVideoIndex"
+                  (click)="setActiveSectionVideo(i)"
+                >
+                  <img [src]="video.thumbnail" [alt]="'Vidéo ' + (i + 1)" />
+                  <span class="videos__play"><i class="pi pi-play"></i></span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
   <app-package-include></app-package-include>
-  
+
   <related-products [currentProduct]="product"></related-products>
-  
+
   <app-footer></app-footer>
 }
-

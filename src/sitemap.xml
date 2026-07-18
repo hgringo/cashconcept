@@ -28,6 +28,18 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <!-- CashBox 5+ -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627d80</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 6 -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-6420b9a45c1t</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- CashBox Pro -->
     <url>
         <loc>https://cashconcept.be/product/a91ecc97-f2a0-47e3-820a-7a91cf3f619a</loc>
@@ -46,9 +58,21 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <!-- CashBox 7+ Vertical -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b962a4f2</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- CashBox 8 -->
     <url>
         <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b9627f10</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- CashBox 8+ -->
+    <url>
+        <loc>https://cashconcept.be/product/65648d9c-2896-48e8-a6fd-7820b962a5d1</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>

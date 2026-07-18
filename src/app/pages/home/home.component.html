@@ -7,9 +7,18 @@
     
     <app-categories></app-categories>
     
+    <div id="reviews" class="reviews">
+        <div [className]="environment.googleReviewsId" data-elfsight-app-lazy></div>
+    </div>
+
+    <app-satisfaction></app-satisfaction>
+    
+    <app-programs></app-programs>
+
     <app-fundings></app-fundings>
 
     <app-customers></app-customers>
+
 </div>
 
 <app-footer></app-footer>

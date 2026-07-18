@@ -1,0 +1,155 @@
+<!-- ===== Chat window ===== -->
+<div class="cc-window" [class.open]="open" role="dialog" aria-label="Assistant CashBox">
+
+  <div class="cc-head">
+    <div class="cc-row">
+      <div class="cc-avatar">
+        <svg class="robot" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="8" width="14" height="11" rx="3"/>
+          <path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.2"/>
+          <circle cx="9.5" cy="13" r="1.15" fill="#fff" stroke="none"/>
+          <circle cx="14.5" cy="13" r="1.15" fill="#fff" stroke="none"/>
+          <path d="M3.6 12v2M20.4 12v2"/>
+        </svg>
+      </div>
+      <div class="cc-id">
+        <h2>{{ 'chatbot.title' | translate }}</h2>
+        <div class="sub"><span class="cc-dot"></span> {{ 'chatbot.status' | translate }}</div>
+      </div>
+      <div class="cc-head-actions">
+        <button class="cc-restart" type="button" [title]="'chatbot.restart' | translate" [attr.aria-label]="'chatbot.restart' | translate" (click)="start()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>
+          </svg>
+        </button>
+        <button class="cc-close-head" type="button" [title]="'chatbot.close' | translate" [attr.aria-label]="'chatbot.close' | translate" (click)="toggle()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-progress"><span [style.width]="progressWidth"></span></div>
+
+  <!-- Messages -->
+  <div class="cc-body" #body>
+    @for (m of messages; track $index) {
+      @if (m.typing) {
+        <div class="msg bot typing">
+          <div class="mini">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.2"/>
+              <circle cx="9.5" cy="13" r="1.1" fill="#fff" stroke="none"/><circle cx="14.5" cy="13" r="1.1" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
+          <div class="bubble"><i></i><i></i><i></i></div>
+        </div>
+      } @else {
+        <div class="msg" [class.bot]="m.role === 'bot'" [class.user]="m.role === 'user'">
+          @if (m.role === 'bot') {
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.2"/>
+                <circle cx="9.5" cy="13" r="1.1" fill="#fff" stroke="none"/><circle cx="14.5" cy="13" r="1.1" fill="#fff" stroke="none"/>
+              </svg>
+            </div>
+          }
+          <div class="bubble">
+            <span [innerHTML]="m.html"></span>
+            @if (m.cards?.length) {
+              <div class="cards" [class.single]="m.cards!.length === 1">
+                @for (p of m.cards; track p.url) {
+                  <a class="card" [href]="p.url" target="_blank" rel="noopener">
+                    <span class="ph">
+                      <img [src]="p.image" [alt]="p.name" loading="lazy" (error)="onImgError($event)">
+                    </span>
+                    <span class="t">{{ p.name }}</span>
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        @if (m.options?.length) {
+          <div class="chat-options" [class.full]="m.optionsFull">
+            @for (o of m.options; track o.label) {
+              <button class="opt" [class.full]="m.optionsFull" type="button" (click)="pick(o)">{{ o.label }}</button>
+            }
+          </div>
+        }
+      }
+    }
+  </div>
+
+  <!-- Footer : uniquement le formulaire de coordonnées -->
+  @if (footMode === 'form') {
+    <div class="cc-foot">
+      <div class="cc-form">
+        <div class="field">
+          <label>{{ 'chatbot.formFullname' | translate }} <span class="req">*</span></label>
+          <input type="text" [(ngModel)]="form.fullname" [placeholder]="'chatbot.formFullname' | translate" autocomplete="off">
+        </div>
+        <div class="field">
+          <label>{{ 'chatbot.formPhone' | translate }} <span class="req">*</span></label>
+          <input type="tel" [(ngModel)]="form.phone" [placeholder]="'chatbot.formPhone' | translate" autocomplete="off">
+        </div>
+        <div class="field">
+          <label>{{ 'chatbot.formEmail' | translate }} <span class="req">*</span></label>
+          <input type="email" [(ngModel)]="form.email" [placeholder]="'chatbot.formEmail' | translate" autocomplete="off">
+        </div>
+        @if (formError) { <div class="form-err">{{ formError }}</div> }
+
+        <div class="form-actions">
+          <button class="send email" type="button" (click)="sendByEmail()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+            </svg>
+            {{ 'chatbot.sendEmail' | translate }}
+          </button>
+          <button class="send whatsapp" type="button" (click)="sendByWhatsapp()">
+            <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.2.6.5.9 1.1 1.5 1.9 2 .3.2.5.1.7-.1l.6-.7c.2-.2.3-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+            {{ 'chatbot.sendWhatsapp' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="cc-credit">{{ 'chatbot.poweredBy' | translate }} <b>CashConcept</b></div>
+</div>
+
+<!-- ===== Teaser / message d'accroche ===== -->
+@if (showTeaser && !open) {
+  <div class="cc-teaser" role="button" tabindex="0"
+       (click)="openFromTeaser()" (keydown.enter)="openFromTeaser()">
+    <button class="cc-teaser-close" type="button" [attr.aria-label]="'chatbot.close' | translate" (click)="dismissTeaser($event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="cc-teaser-row">
+      <div class="cc-teaser-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.2"/>
+          <circle cx="9.5" cy="13" r="1.15" fill="#fff" stroke="none"/><circle cx="14.5" cy="13" r="1.15" fill="#fff" stroke="none"/>
+          <path d="M3.6 12v2M20.4 12v2"/>
+        </svg>
+      </div>
+      <div class="cc-teaser-text">
+        <b>{{ 'chatbot.teaserTitle' | translate }}</b>
+        <span>{{ 'chatbot.teaserText' | translate }}</span>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ===== Launcher ===== -->
+<button class="cc-launcher" [class.open]="open" type="button"
+        [attr.aria-label]="open ? ('chatbot.close' | translate) : ('chatbot.open' | translate)" (click)="toggle()">
+  <svg class="robot" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.2"/>
+    <circle cx="9.5" cy="13" r="1.15" fill="#fff" stroke="none"/><circle cx="14.5" cy="13" r="1.15" fill="#fff" stroke="none"/>
+    <path d="M3.6 12v2M20.4 12v2"/>
+  </svg>
+  <span class="cc-launcher-label">{{ 'chatbot.launcher' | translate }}</span>
+  <svg class="close" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+</button>

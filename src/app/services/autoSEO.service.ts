@@ -202,7 +202,7 @@ export class AutoSEOService{
         this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
         this.meta.updateTag({ name: 'twitter:title', content: this.seoTitle });
         this.meta.updateTag({ name: 'twitter:description', content: this.seoDesc });
-        this.meta.updateTag({ name: 'twitter:image', content: `${environment.baseUrl}/assets/logo.png` });
+        this.meta.updateTag({ name: 'twitter:image', content: `${environment.baseUrl}/assets/logo_cashconcept.png` });
         this.meta.updateTag({ name: 'twitter:site', content: '@cashconcept' });
 
         // Schema.org markup WebPage
@@ -220,7 +220,7 @@ export class AutoSEOService{
             "@type": "Organization",
             name: this.seoName,
             url: environment.baseUrl,
-            logo: `${environment.baseUrl}/assets/logo.png`,
+            logo: `${environment.baseUrl}/assets/logo_cashconcept.png`,
         };
 
         // Schema.org markup WebSite
@@ -241,7 +241,7 @@ export class AutoSEOService{
                 "@type": "Product",
                 "name": name,
                 "url": this.seoUrl,
-                "image": `${environment.baseUrl}/assets/logo.png`,
+                "image": `${environment.baseUrl}/assets/logo_cashconcept.png`,
                 "description": this.seoDesc,
                 "brand": {
                     "@type": "Brand",
@@ -257,7 +257,7 @@ export class AutoSEOService{
                 "@type": "Product",
                 "name": name,
                 "url": this.seoUrl,
-                "image": `${environment.baseUrl}/assets/logo.png`,
+                "image": `${environment.baseUrl}/assets/logo_cashconcept.png`,
                 "description": this.seoDesc,
                 "brand": {
                     "@type": "Brand",
@@ -282,12 +282,12 @@ export class AutoSEOService{
         // Schema.org markup for Google+
         this.meta.updateTag({ itemprop: 'name', content: this.seoName });
         this.meta.updateTag({ itemprop: 'description', content: this.seoDesc });
-        this.meta.updateTag({ itemprop: 'image', content: `${environment.baseUrl}/assets/logo.png` });
+        this.meta.updateTag({ itemprop: 'image', content: `${environment.baseUrl}/assets/logo_cashconcept.png` });
             
         // Open Graph for Facebook
         this.meta.updateTag({ property: 'og:title', content: this.seoTitle });
         this.meta.updateTag({ property: 'og:description', content: this.seoDesc });
-        this.meta.updateTag({ property: 'og:image', content: `${environment.baseUrl}/assets/logo.png` });
+        this.meta.updateTag({ property: 'og:image', content: `${environment.baseUrl}/assets/logo_cashconcept.png` });
         this.meta.updateTag({ property: 'og:image:alt', content: 'Logo' });
         this.meta.updateTag({ property: 'og:url', content: this.seoUrl });
         this.meta.updateTag({ property: 'og:type', content: 'website' });

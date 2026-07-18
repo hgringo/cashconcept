@@ -5,6 +5,8 @@ export interface IProduct {
     image: string;
     menu: string;
     banner: string;
+    subheaderImage?: string;
+    subheaderVideo?: ISubheaderVideo;
     gallery: IGalleryItem[];
     technicalFeatures?: ITechnicalFeatures[];
     isCompared: boolean;
@@ -97,4 +99,9 @@ export interface IGalleryItem {
     src: string;
     thumbnail?: string;
     isVideo: boolean;
+}
+
+export interface ISubheaderVideo {
+    video: string;
+    poster?: string;
 }

@@ -5,16 +5,20 @@
     &__container {
         display: flex;
         flex-direction: column;
+        gap: 30px;
         
         @media (min-width: 960px) { 
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            padding-left: 30px;
         }
     }
 
     &__item {
         border-radius: 5px;
-        padding: 20px;
+
+        @media (min-width: 960px) { 
+            padding: 0;
+        }
     }
 
     &__name {
@@ -29,6 +33,32 @@
             background-color: $reseda-green;
             position: absolute;
             left: 0; bottom: 0;
+        }
+    }
+
+    &__role {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 15px;
+
+        &.nextto{
+            display: inline;
+            margin-left: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) { 
+            font-size: 25px;
+            display: inline;
+            margin-left: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 960px) { 
+            font-size: 14px;
         }
     }
 
@@ -92,6 +122,18 @@
 
 }
 
+.bracket {
+
+    color: $reseda-green;
+
+    &.left {
+        margin-right: 10px;
+    }
+
+    &.right {
+        margin-left: 10px;
+    }
+}
 
 .form__confirmation {
     display: flex;

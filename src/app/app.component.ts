@@ -1,10 +1,11 @@
-import { Component, inject, makeStateKey, REQUEST_CONTEXT, TransferState, VERSION, PLATFORM_ID } from '@angular/core';
+import { Component, inject, makeStateKey, REQUEST_CONTEXT, TransferState, VERSION, PLATFORM_ID, OnInit, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { HeaderComponent } from './components/header/header.component';
 import { CtaContactComponent } from './components/cta-contact/cta-contact.component';
 import { TranslateService } from '@ngx-translate/core';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   standalone: true,
@@ -28,8 +29,11 @@ export class AppComponent {
   serverKey = makeStateKey<string>('server');
 
   constructor(
-    private translate: TranslateService
+    private translationService: TranslationService,
+    @Inject(DOCUMENT) private document: Document
   ) {
+
+    this.forceLightMode();
 
     const reqContext = inject(REQUEST_CONTEXT, { optional: true }) as {
       server: string;
@@ -44,29 +48,18 @@ export class AppComponent {
     }
 
     this.server = this.transferState.get(this.serverKey, '');
+  }
 
-    // LANGUAGE MANAGEMENT
-    // ===================
+  ngOnInit() {
+    this.translationService.initLanguage();
+  }
 
-    this.translate.addLangs(['fr', 'en', 'nl']);
+  forceLightMode() {
 
-    if (isPlatformBrowser(this.platform)) { 
+    this.document.documentElement.classList.remove('p-theme-dark');
+    this.document.documentElement.classList.add('p-theme-light');
 
-      this.translate.setDefaultLang('fr');
-      const storedLang = localStorage.getItem('language');
-  
-      if (storedLang) {
-        this.translate.setDefaultLang(storedLang);
-        this.translate.use(storedLang);
-      } 
-      else {  
-        const browserLang = this.translate.getBrowserLang();
-        const defaultLang = browserLang?.match(/en|fr|nl/) ? browserLang : 'fr';
-
-        this.translate.setDefaultLang(defaultLang);
-        this.translate.use(defaultLang);
-        localStorage.setItem('language', defaultLang);
-      }
-    }
+    // Explicitly set theme in PrimeNG format (if needed)
+    this.document.documentElement.setAttribute('data-theme', 'aura-light-blue');
   }
 }

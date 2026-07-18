@@ -7,8 +7,10 @@ import { CustomersComponent } from 'app/components/customers/customers.component
 import { FeaturesComponent } from 'app/components/features/features.component';
 import { FooterComponent } from 'app/components/footer/footer.component';
 import { FundingsComponent } from 'app/components/fundings/fundings.component';
+import { ProgramsComponent } from 'app/components/programs/programs.component';
+import { SatisfactionComponent } from 'app/components/satisfaction/satisfaction.component';
 import { AutoSEOService, PageTYPE } from 'app/services/autoSEO.service';
-import { TranslationService } from 'app/services/translation.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,9 @@ import { TranslationService } from 'app/services/translation.service';
     CategoriesComponent,
     FundingsComponent,
     FooterComponent,
-    CustomersComponent
+    CustomersComponent,
+    ProgramsComponent,
+    SatisfactionComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -29,15 +33,13 @@ import { TranslationService } from 'app/services/translation.service';
 })
 export class HomePage implements OnInit {
 
+    environment = environment;
+
     constructor(
-      private autoSEOService: AutoSEOService,
-      private translationService: TranslationService
+      private autoSEOService: AutoSEOService
     ) {}
 
     ngOnInit() {
-
-      this.translationService.initLanguage();
-
       this.autoSEOService.prepareSEO(PageTYPE.HomePage);
     }
 }

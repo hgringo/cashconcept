@@ -1,0 +1,164 @@
+<!-- Customization Start -->
+<section class="cc-perso"
+         [style.--accent]="selected.color"
+         [style.--accent-soft]="selected.soft">
+
+  <!-- HERO -->
+  <div class="container-fluid cc-hero">
+    <div class="container">
+      <div class="cc-eyebrow cc-fade cc-d1">
+        <span class="dot"></span> {{ 'persoEyebrow' | translate }}
+      </div>
+      <h1 class="cc-title cc-fade cc-d2">
+        {{ 'persoTitle' | translate }} <em>{{ 'persoTitleEm' | translate }}</em>
+      </h1>
+      <p class="cc-lead cc-fade cc-d3">{{ 'persoSubtitle' | translate }}</p>
+      <p class="cc-intro cc-fade cc-d4">{{ 'persoIntro1' | translate }}</p>
+      <p class="cc-intro cc-fade cc-d5">{{ 'persoIntro2' | translate }}</p>
+
+      <div class="cc-available cc-fade cc-d6">
+        <fa-icon [icon]="faPalette"></fa-icon>
+        <span>{{ 'persoAvailable' | translate }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SHOWCASE -->
+  <div class="container-fluid cc-stage" (mouseenter)="pauseAuto()" (mouseleave)="resumeAuto()">
+    <div class="container">
+      <div class="row g-5">
+
+        <div class="col-lg-6 cc-fade">
+          <div class="cc-frame">
+            <span class="cc-badge">{{ selected.name }}</span>
+            <span class="cc-glow"></span>
+            <img *ngFor="let m of models"
+                 [ngSrc]="m.image" width="1000" height="1000"
+                 [class.active]="m.id === selected.id"
+                 [priority]="m.id === models[0].id"
+                 [alt]="m.name" />
+          </div>
+        </div>
+
+        <div class="col-lg-6 cc-fade cc-d2">
+          <span class="cc-kicker">{{ selected.tone | translate }}</span>
+          <h2 class="cc-name">{{ selected.name }}</h2>
+          <p class="cc-env">
+            {{ 'persoStagedIn' | translate }} <b>{{ selected.env | translate }}</b>.
+          </p>
+
+          <div class="cc-swatches">
+            <button *ngFor="let m of models; let i = index"
+                    type="button" class="cc-swatch"
+                    [class.on]="i === selectedIndex"
+                    [style.color]="m.color"
+                    (click)="select(i)">
+              <span class="disc" [style.background]="m.color"></span>
+              <span class="lbl">{{ m.name }}</span>
+            </button>
+          </div>
+
+          <div class="cc-thumbs">
+            <div *ngFor="let m of models; let i = index"
+                 class="cc-thumb" [class.on]="i === selectedIndex"
+                 (click)="select(i)">
+              <img [ngSrc]="m.image" width="200" height="200" [alt]="m.name" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTORS -->
+  <div class="container-fluid cc-sectors">
+    <div class="container">
+      <div class="cc-head cc-fade">
+        <span class="cc-kicker">{{ 'persoSectorsKicker' | translate }}</span>
+        <h2>{{ 'persoSectorsTitle' | translate }}</h2>
+        <p>{{ 'persoSectorsDesc' | translate }}</p>
+      </div>
+    </div>
+    <div class="cc-marquee">
+      <div class="cc-track">
+        <span class="cc-pill" *ngFor="let s of sectors">{{ s | translate }}</span>
+        <span class="cc-pill" *ngFor="let s of sectors">{{ s | translate }}</span>
+      </div>
+    </div>
+    <div class="cc-marquee reverse">
+      <div class="cc-track">
+        <span class="cc-pill" *ngFor="let s of sectors">{{ s | translate }}</span>
+        <span class="cc-pill" *ngFor="let s of sectors">{{ s | translate }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="container-fluid cc-why">
+    <div class="container">
+      <div class="cc-head left cc-fade">
+        <span class="cc-kicker">{{ 'persoWhyKicker' | translate }}</span>
+        <h2>{{ 'persoWhyTitle' | translate }}</h2>
+        <p>{{ 'persoWhyDesc' | translate }}</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 cc-fade"
+             *ngFor="let b of benefits; let i = index"
+             [ngClass]="'cc-d' + (i + 1)">
+          <div class="cc-card h-100">
+            <div class="cc-ico"><fa-icon [icon]="b.icon"></fa-icon></div>
+            <h4>{{ b.title | translate }}</h4>
+            <p>{{ b.desc | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODERN STRIP -->
+  <div class="container-fluid cc-modern">
+    <div class="container">
+      <div class="cc-strip cc-fade">
+        <h2>{{ 'persoModernTitle' | translate }}</h2>
+        <p>{{ 'persoModernDesc' | translate }}</p>
+        <div class="row g-3">
+          <div class="col-6 col-lg-3">
+            <div class="cc-pt"><span class="n">01</span><span class="t">{{ 'persoModern1' | translate }}</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="cc-pt"><span class="n">02</span><span class="t">{{ 'persoModern2' | translate }}</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="cc-pt"><span class="n">03</span><span class="t">{{ 'persoModern3' | translate }}</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="cc-pt"><span class="n">04</span><span class="t">{{ 'persoModern4' | translate }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="container-fluid cc-cta">
+    <div class="container">
+      <div class="cc-cta-inner cc-fade">
+        <h2>{{ 'persoCtaTitle' | translate }}</h2>
+        <p>{{ 'persoCtaDesc1' | translate }}</p>
+        <p>{{ 'persoCtaDesc2' | translate }}</p>
+        <div class="cc-btns">
+          <a [href]="['/contact']" class="btn btn-primary py-2 px-4">
+            <span>{{ 'persoCtaButton' | translate }}</span>
+            <fa-icon [icon]="faArrowRight" class="ms-2"></fa-icon>
+          </a>
+          <a [href]="['/comparator']" class="btn btn-outline-primary py-2 px-4">
+            {{ 'persoCtaCompare' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- Customization End -->

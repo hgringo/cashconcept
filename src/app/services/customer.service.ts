@@ -7,6 +7,10 @@ import { ICustomer } from 'app/types/customer';
 export class CustomerService {
 
     customers: ICustomer[] = [
+        { name: 'SAGA - Mercedes Benz', url: 'assets/customers/Mercedes-Benz SAGA.webp' },
+        { name: 'Häagen-Dazs', url: 'assets/customers/hagendazs.webp' },
+        { name: 'Laurent Dumont', url: 'assets/customers/Laurent Dumont.webp' },
+        { name: 'Good Fellas', url: 'assets/customers/GoodFellas.webp' },
         { name: 'Domino\'s Pizza', url: 'assets/customers/dominos-pizza.svg' },
         { name: 'API', url: 'assets/customers/API.svg' },
         { name: 'SPAR', url: 'assets/customers/spar.svg' },

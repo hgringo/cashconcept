@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="content">
+
+<section class="trust-section">
+
+  <div class="trust-grid">
+
+    <!-- CONTENT -->
+    <div class="trust-content">
+
+      <span class="label">
+        {{ 'trust.label' | translate }}
+      </span>
+
+      <h2 [innerHTML]="'trust.title' | translate"></h2>
+
+      <div class="highlight">
+        <span>{{ 'trust.highlight.listen' | translate }}</span>
+        <span>{{ 'trust.highlight.reactive' | translate }}</span>
+        <span>{{ 'trust.highlight.engaged' | translate }}</span>
+      </div>
+
+      <p class="description">
+        {{ 'trust.description1' | translate }}
+        <br><br>
+        {{ 'trust.description2' | translate }}
+        <br><br>
+        {{ 'trust.description3' | translate }}
+      </p>
+
+      <div class="pillars">
+
+        <div class="pillar">
+          <div class="icon">🤝</div>
+          <h4>{{ 'trust.pillars.support' | translate }}</h4>
+        </div>
+
+        <div class="pillar">
+          <div class="icon">🛡️</div>
+          <h4>{{ 'trust.pillars.reliability' | translate }}</h4>
+        </div>
+
+        <div class="pillar">
+          <div class="icon">⚡</div>
+          <h4>{{ 'trust.pillars.reactivity' | translate }}</h4>
+        </div>
+
+      </div>
+
+      <a href="/monnayeurs-automatiques"
+         class="btn btn-primary w-full">
+        {{ 'trust.cta' | translate }}
+      </a>
+
+    </div>
+
+    <!-- IMAGE -->
+    <div class="trust-image">
+      <img src="assets/Client_satisfait.png"
+           [attr.alt]="'trust.imageAlt' | translate">
+    </div>
+
+  </div>
+
+</section>
+
+  </div>
+</div>
